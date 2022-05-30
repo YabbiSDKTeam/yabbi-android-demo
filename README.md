@@ -79,7 +79,7 @@
 Как только gradle config будет сгенерирован, сохраните файл и нажмите **Gradle sync**.
 
 ## Шаг 2. Инициализация SDK
-Мы рекомендуем вызывать инициализацию Appodeal SDK в вашей MainActivity - в onCreate методе.
+Мы рекомендуем вызывать инициализацию SDK в вашей MainActivity - в onCreate методе.
 
 ```java
 @Override
