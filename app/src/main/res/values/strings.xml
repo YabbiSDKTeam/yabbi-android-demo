@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">yabbiads-android-demo</string>
+    <string name="app_name">YabbiAds Android Demo</string>
+    <string name="publisher_id">Publisher ID</string>
+    <string name="interstitial_id">Interstitial ID</string>
+    <string name="rewarded_id">Rewarded ID</string>
+    <string name="android">Android</string>
+    <string name="reset">Reset</string>
+    <string name="interstitial">interstitial</string>
+    <string name="rewarded">rewarded</string>
 </resources>

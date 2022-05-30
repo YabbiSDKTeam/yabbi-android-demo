@@ -72,7 +72,7 @@
     
     dependencies {
         // ... другие зависимости проекта
-        implementation 'me.yabbi.ads:sdk:2.0.0+'
+        implementation 'me.yabbi.ads:sdk:2.0.0.+'
     }
     ```
 
@@ -85,7 +85,7 @@
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    final String config = new YabbiConfiguration("YOUR_PUBLISHER_KEY, "YOUR_INTERSTITIAL_ID", "YOUR_REWARDED_ID")
+    final YabbiConfiguration config = new YabbiConfiguration("YOUR_PUBLISHER_KEY", "YOUR_INTERSTITIAL_ID", "YOUR_REWARDED_ID");
     YabbiAds.initialize(config);
 }
 ```

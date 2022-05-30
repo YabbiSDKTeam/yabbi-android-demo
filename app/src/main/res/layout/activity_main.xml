@@ -4,15 +4,150 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/panel_on_top"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/android"
+            android:textSize="24sp"
+            android:textColor="@color/teal_200"/>
 
+        <Button
+            android:id="@+id/reset_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/reset"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/panel_on_top"
+        app:layout_constraintLeft_toLeftOf="@id/panel_on_top"
+        app:layout_constraintRight_toRightOf="@id/panel_on_top"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="6dp"
+        android:orientation="vertical"
+        android:id="@+id/fields"
+        >
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/publisher_id"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/publisher_filed"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="0.5"
+            android:hint="@string/publisher_id"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/interstitial_id"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/interstitial_field"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="0.5"
+            android:hint="@string/interstitial_id"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/rewarded_id"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/rewarded_ad"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="0.5"
+            android:hint="@string/rewarded_id"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fields"
+        app:layout_constraintLeft_toLeftOf="@id/fields"
+        app:layout_constraintRight_toRightOf="@id/fields"
+        android:id="@+id/buttons"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/interstitial_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/interstitial"
+            android:textSize="18sp"
+            android:layout_marginEnd="4dp"/>
+
+        <Button
+            android:id="@+id/rewarded_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/rewarded"
+            android:textSize="18sp"
+            android:layout_marginStart="4dp"
+            />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_margin="16dp"
+        android:id="@+id/SCROLLER_ID"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/buttons"
+        app:layout_constraintLeft_toLeftOf="@id/buttons"
+        app:layout_constraintRight_toRightOf="@id/buttons">
+        <TextView
+            android:id="@+id/logger"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""/>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
