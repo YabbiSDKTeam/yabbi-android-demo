@@ -3,6 +3,8 @@ package me.yabbi.demo;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -14,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.HashMap;
 
 import me.yabbi.ads.YabbiAds;
 import me.yabbi.ads.YabbiConfiguration;
@@ -27,18 +31,36 @@ public class MainActivity extends AppCompatActivity {
     private TextView logger;
 
 
-    private static final String DEFAULT_PUBLISHER_ID = "YOUR_PUBLISHER_KEY";
-    private static final String DEFAULT_INTERSTITIAL_ID = "YOUR_INTERSTITIAL_ID";
-    private static final String DEFAULT_REWARDED_ID = "YOUR_REWARDED_ID";
+    private String YABBI_PUBLISHER_ID;
+    private String YABBI_INTERSTITIAL_ID;
+    private String YABBI_REWARDED_ID;
+    private String YANDEX_INTERSTITIAL_ID;
+    private String YANDEX_REWARDED_ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupKeyboardListener(findViewById(R.id.fields).getRootView());
+        setupVariables();
         setupUI();
         setupYabbi();
         setupYabbiCallbacks();
+
+    }
+
+    private void setupVariables() {
+        try {
+            ApplicationInfo info = getPackageManager().getApplicationInfo(this.getApplicationContext().getPackageName(), PackageManager.GET_META_DATA);
+            YABBI_PUBLISHER_ID = info.metaData.getString("YABBI_PUBLISHER_VALUE", "");
+            YABBI_INTERSTITIAL_ID = info.metaData.getString("YABBI_INTERSTITIAL_VALUE", "");
+            YABBI_REWARDED_ID = info.metaData.getString("YABBI_REWARDED_VALUE", "");
+            YANDEX_INTERSTITIAL_ID = info.metaData.getString("YANDEX_INTERSTITIAL_VALUE", "");
+            YANDEX_REWARDED_ID = info.metaData.getString("YANDEX_REWARDED_VALUE", "");
+
+        } catch (PackageManager.NameNotFoundException e) {
+           e.printStackTrace();
+        }
     }
 
     @Override
@@ -68,9 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
         logger = findViewById(R.id.logger);
 
-        publisherField.setText(DEFAULT_PUBLISHER_ID);
-        interstitialField.setText(DEFAULT_INTERSTITIAL_ID);
-        rewardedField.setText(DEFAULT_REWARDED_ID);
+        publisherField.setText(YABBI_PUBLISHER_ID);
+        interstitialField.setText(YABBI_INTERSTITIAL_ID);
+        rewardedField.setText(YABBI_REWARDED_ID);
 
         resetButton.setOnClickListener(
                 v -> setupYabbi()
@@ -101,6 +123,12 @@ public class MainActivity extends AppCompatActivity {
 
         final YabbiConfiguration config = new YabbiConfiguration(publisherID, interstitialID, rewardedID);
         YabbiAds.initialize(config);
+        final HashMap<String, String> customParams = new HashMap<>();
+        customParams.put("yandex_interstitial_id", YANDEX_INTERSTITIAL_ID);
+        customParams.put("yandex_rewarded_id", YANDEX_REWARDED_ID);
+
+        YabbiAds.setCustomParams(customParams);
+
 
         writeLog("PublisherID: " + publisherID + "\nInterstitialID: " + interstitialID + "\nRewardedID: " + rewardedID, true);
     }

@@ -18,6 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name = "YABBI_PUBLISHER_VALUE"
+            android:value = "${YABBI_PUBLISHER_ID}"/>
+        <meta-data
+            android:name = "YABBI_INTERSTITIAL_VALUE"
+            android:value = "${YABBI_INTERSTITIAL_ID}"/>
+        <meta-data
+            android:name = "YABBI_REWARDED_VALUE"
+            android:value = "${YABBI_REWARDED_ID}"/>
+        <meta-data
+            android:name = "YANDEX_INTERSTITIAL_VALUE"
+            android:value = "${YANDEX_INTERSTITIAL_ID}"/>
+        <meta-data
+            android:name = "YANDEX_REWARDED_VALUE"
+            android:value = "${YANDEX_REWARDED_ID}"/>
     </application>
-
 </manifest>
