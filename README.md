@@ -21,6 +21,8 @@
 По этой причине убедитесь, что вы используете версию Gradle,
 которая соответствует одной из перечисленных [здесь](https://developer.android.com/studio/releases/gradle-plugin#4-0-0).
 
+Вы можете использовать рекламные сети выборочно. Чем больше их подключено - тем больше филрейт.
+
 В зависимости от используемой версии Android Studio вставьте зависимость в файл Gradle:
 
 1. Вставьте следующий код в settings.gradle в корне проекта.  
@@ -72,7 +74,16 @@
     
     dependencies {
         // ... другие зависимости проекта
-        implementation 'me.yabbi.ads:sdk:2.0.0.+'
+
+
+        // Если вы используете все возможные адаптеры вставьте этот код
+        implementation 'me.yabbi.ads:sdk:2.1.0'
+
+        // Если вы используете некоторые адаптеры либо не используете их вообще
+        implementation 'me.yabbi.ads:core:1.1.0'
+        implementation 'me.yabbi.ads.networks:yandex:1.0.0' // Яндлекс реклама
+
+
     }
     ```
 
@@ -85,12 +96,24 @@
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    final YabbiConfiguration config = new YabbiConfiguration("YOUR_PUBLISHER_KEY", "YOUR_INTERSTITIAL_ID", "YOUR_REWARDED_ID");
+    final YabbiConfiguration config = new YabbiConfiguration("YOUR_PUBLISHER_ID", "YOUR_INTERSTITIAL_ID", "YOUR_REWARDED_ID");
     YabbiAds.initialize(config);
+
+    // Добавляем нужные настроки SDK
+    final HashMap<String, String> customParams = new HashMap<>();
+
+    // Параметры необходимые для работы выбранных рекламных сетей
+
+    // Яндекс
+    // customParams.put("yandex_interstitial_id", "YANDEX_INTERSTITIAL_ID");
+    // customParams.put("yandex_rewarded_id", "YANDEX_REWARDED_ID");
+
+     YabbiAds.setCustomParams(customParams);
+
 }
 ```
 
-1. Замените YOUR_PUBLISHER_KEY на ключ издателя из [личного кабинета](https://mobileadx.ru).
+1. Замените YOUR_PUBLISHER_ID на ключ издателя из [личного кабинета](https://mobileadx.ru).
 2. Замените YOUR_INTERSTITIAL_ID на ключ соответствующий баннерной рекламе из [личного кабинета](https://mobileadx.ru).
 3. Замените YOUR_REWARDED_ID на ключ соответствующий видео с вознаграждением из [личного кабинета](https://mobileadx.ru).
 
