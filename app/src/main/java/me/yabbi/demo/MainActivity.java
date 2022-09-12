@@ -123,11 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
         final YabbiConfiguration config = new YabbiConfiguration(publisherID, interstitialID, rewardedID);
         YabbiAds.initialize(config);
-        final HashMap<String, String> customParams = new HashMap<>();
-        customParams.put("yandex_interstitial_id", YANDEX_INTERSTITIAL_ID);
-        customParams.put("yandex_rewarded_id", YANDEX_REWARDED_ID);
-
-        YabbiAds.setCustomParams(customParams);
+        YabbiAds.setCustomParams("yandex_interstitial_id", YANDEX_INTERSTITIAL_ID);
+        YabbiAds.setCustomParams("yandex_rewarded_id", YANDEX_REWARDED_ID);
 
 
         writeLog("PublisherID: " + publisherID + "\nInterstitialID: " + interstitialID + "\nRewardedID: " + rewardedID, true);

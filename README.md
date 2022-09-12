@@ -2,7 +2,7 @@
 
 ## Руководство по Интеграции
 
-Версия релиза **2.1.0** | Дата релиза **5.09.2022**
+Версия релиза **2.1.1** | Дата релиза **12.09.2022**
 
 > Минимальные требования:
 >
@@ -79,10 +79,10 @@
         // либо испльзовать только некоторые сети
 
         // Если вы используете все рекламные сети вставьте этот код
-        implementation 'me.yabbi.ads:sdk:2.1.0'
+        implementation 'me.yabbi.ads:sdk:2.1.1'
 
         // Если вы используете несльколько рекламных сетей
-        implementation 'me.yabbi.ads:core:1.1.0'
+        implementation 'me.yabbi.ads:core:1.1.1'
         implementation 'me.yabbi.ads.networks:yandex:1.0.0' // Яндекс реклама
 
     }
@@ -103,18 +103,12 @@ protected void onCreate(Bundle savedInstanceState) {
     YabbiAds.initialize(config);
 
     // Добавляем нужные настроки SDK
-    final HashMap<String, String> customParams = new HashMap<>();
-
-    // Далее вы можете устанавливать настройки SDK
 
     // Установите для полноэкранной Яндекс-рекламы
-    // customParams.put("yandex_interstitial_id", "YANDEX_INTERSTITIAL_ID");
+    // YabbiAds.setCustomParams("yandex_interstitial_id", "YANDEX_INTERSTITIAL_ID");
 
     // Установите для видео с вознаграждением Яндекс-рекламы
-    // customParams.put("yandex_rewarded_id", "YANDEX_REWARDED_ID");
-
-     YabbiAds.setCustomParams(customParams);
-
+    // YabbiAds.setCustomParams("yandex_rewarded_id", "YANDEX_REWARDED_ID");
 }
 ```
 
