@@ -80,15 +80,14 @@
     dependencies {
         // ... другие зависимости проекта
 
-        // Вы можете подключить SDK сразу со всеми рекламными адаптерами
-        // либо испльзовать только некоторые из них
-
-        // Если вы используете все реалкамные адаптеры вставьте этот код
+        // Используйте при подключении всех рекламных адаптеров
         implementation 'me.yabbi.ads:sdk:2.1.2'
 
-        // Оставьте адаптеры, которые вы используете
+        // Используйте при подключении всех рекламных адаптеров
         implementation 'me.yabbi.ads:core:1.1.2'
-        implementation 'me.yabbi.ads.networks:yandex:1.0.0' // Адаптер для Яндекса
+
+        // Добавьте если вы испольузете адаптер для Яндекса
+        implementation 'me.yabbi.ads.networks:yandex:1.0.0'
 
     }
     ```
@@ -106,10 +105,10 @@ protected void onCreate(Bundle savedInstanceState) {
     final YabbiConfiguration config = new YabbiConfiguration("YOUR_PUBLISHER_ID", "YOUR_INTERSTITIAL_ID", "YOUR_REWARDED_ID");
     YabbiAds.initialize(config);
 
-    // Требуется для показа полноэкранная рекламы Яндекса
+    // Установите для показа полноэкранной рекламы Яндекса
     // YabbiAds.setCustomParams("yandex_interstitial_id", "YANDEX_INTERSTITIAL_ID");
 
-    // Требуется для показа рекламы с вознаграждением Яндекса
+    // Установите для показа рекламы с вознаграждением Яндекса
     // YabbiAds.setCustomParams("yandex_rewarded_id", "YANDEX_REWARDED_ID");
 }
 ```
