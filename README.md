@@ -14,6 +14,11 @@
 
 ## Шаг 1. Установка SDK
 
+> **Рекламные адаптеры**.
+>
+>SDK предоставляет адаптеры для интеграции в сторонние медиации.  
+>Вы можете узнать о них подробнее по ссылке - [клик](https://github.com/YabbiSDKTeam/additional-documentation/blob/master/adapters/ADAPTERS.md)
+
 ### 1.1 Подготовьте Gradle сборки для Android 11
 >
 >В Android 11 изменился способ запроса приложений и взаимодействия с другими.
@@ -21,7 +26,7 @@
 По этой причине убедитесь, что вы используете версию Gradle,
 которая соответствует одной из перечисленных [здесь](https://developer.android.com/studio/releases/gradle-plugin#4-0-0).
 
-Вы можете использовать рекламные сети выборочно. Чем больше их подключено - тем больше филрейт.
+Вы можете использовать радаптеры для медиации выборочно. Чем больше их подключено - тем больше филрейт.
 
 В зависимости от используемой версии Android Studio вставьте зависимость в файл Gradle:
 
@@ -75,15 +80,15 @@
     dependencies {
         // ... другие зависимости проекта
 
-        // Вы можете подключить SDK сразу со всеми рекламными сетями
-        // либо испльзовать только некоторые сети
+        // Вы можете подключить SDK сразу со всеми рекламными адаптерами
+        // либо испльзовать только некоторые из них
 
-        // Если вы используете все рекламные сети вставьте этот код
+        // Если вы используете все реалкамные адаптеры вставьте этот код
         implementation 'me.yabbi.ads:sdk:2.1.2'
 
-        // Если вы используете несльколько рекламных сетей
+        // Оставьте адаптеры, которые вы используете
         implementation 'me.yabbi.ads:core:1.1.2'
-        implementation 'me.yabbi.ads.networks:yandex:1.0.0' // Яндекс реклама
+        implementation 'me.yabbi.ads.networks:yandex:1.0.0' // Адаптер для Яндекса
 
     }
     ```
@@ -101,12 +106,10 @@ protected void onCreate(Bundle savedInstanceState) {
     final YabbiConfiguration config = new YabbiConfiguration("YOUR_PUBLISHER_ID", "YOUR_INTERSTITIAL_ID", "YOUR_REWARDED_ID");
     YabbiAds.initialize(config);
 
-    // Добавляем нужные настроки SDK
-
-    // Установите для полноэкранной Яндекс-рекламы
+    // Требуется для показа полноэкранная рекламы Яндекса
     // YabbiAds.setCustomParams("yandex_interstitial_id", "YANDEX_INTERSTITIAL_ID");
 
-    // Установите для видео с вознаграждением Яндекс-рекламы
+    // Требуется для показа рекламы с вознаграждением Яндекса
     // YabbiAds.setCustomParams("yandex_rewarded_id", "YANDEX_REWARDED_ID");
 }
 ```
