@@ -110,9 +110,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
     <application 
-		<-- Ваш код -->
-		
-        android:networkSecurityConfig="@xml/network_security_config"
+		...
+        android:networkSecurityConfig="@xml/network_security_config">
     </application>
 </manifest>
 ```
@@ -149,16 +148,16 @@ protected void onCreate(Bundle savedInstanceState) {
     // YabbiAds.setCustomParams("yandex_rewarded_id", "замените_на_свой_id");
     
     // Установите для показа рекламы от Mintegral
-    YabbiAds.setCustomParams("mintegral_app_id", "замените_на_свой_id");
-    YabbiAds.setCustomParams("mintegral_app_key", "замените_на_свой_id");
+    // YabbiAds.setCustomParams("mintegral_app_id", "замените_на_свой_id");
+    // YabbiAds.setCustomParams("mintegral_app_key", "замените_на_свой_id");
     
     // Установите для показа полноэкранной рекламы Mintegral
-    YabbiAds.setCustomParams("mintegral_interstitial_placement_id", "замените_на_свой_id");
-    YabbiAds.setCustomParams("mintegral_interstitial_id", "замените_на_свой_id");
+    // YabbiAds.setCustomParams("mintegral_interstitial_placement_id", "замените_на_свой_id");
+    // YabbiAds.setCustomParams("mintegral_interstitial_id", "замените_на_свой_id");
     
     // Установите для показа рекламы с вознаграждением Mintegral
-    YabbiAds.setCustomParams("mintegral_rewarded_placement_id", "замените_на_свой_id");
-    YabbiAds.setCustomParams("mintegral_rewarded_id", "замените_на_свой_id");
+    // YabbiAds.setCustomParams("mintegral_rewarded_placement_id", "замените_на_свой_id");
+    // YabbiAds.setCustomParams("mintegral_rewarded_id", "замените_на_свой_id");
 }
 ```
 
