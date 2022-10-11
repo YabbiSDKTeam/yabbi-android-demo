@@ -99,7 +99,39 @@
 
 ## Шаг 2. Настройка проекта
 
-## Шаг 2. Инициализация SDK
+### 2.1 Настройка Network security config
+**Android 9.0 (API 28)** по умолчанию блокирует HTTP трафик. Это может мешать правильному показу рекламы.  
+Подробнее вы можете ознакомиться по [ссылке](https://developer.android.com/training/articles/security-config).
+
+Чтобы предотвратить блокировку http-трафика, выполните следующие шаги:
+
+1. Добавьте **Network Security Configuration** файл в **AndroidManifest.xml**:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+    <application 
+		<-- Ваш код -->
+		
+        android:networkSecurityConfig="@xml/network_security_config"
+    </application>
+</manifest>
+```
+2. Добавьте конфиг, который передает **cleartextTrafficPermitted** true в **network_security_config.xml** файл:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">127.0.0.1</domain>
+    </domain-config>
+</network-security-config>
+```
+
+## Шаг 3. Инициализация SDK
 Мы рекомендуем вызывать инициализацию SDK в вашей MainActivity - в onCreate методе.
 Вы можете указывать доступные настройки SDK с поомощью метода **setCustomParams**
 
@@ -111,10 +143,22 @@ protected void onCreate(Bundle savedInstanceState) {
     YabbiAds.initialize(config);
 
     // Установите для показа полноэкранной рекламы Яндекса
-    // YabbiAds.setCustomParams("yandex_interstitial_id", "YANDEX_INTERSTITIAL_ID");
+    // YabbiAds.setCustomParams("yandex_interstitial_id", "замените_на_свой_id");
 
     // Установите для показа рекламы с вознаграждением Яндекса
-    // YabbiAds.setCustomParams("yandex_rewarded_id", "YANDEX_REWARDED_ID");
+    // YabbiAds.setCustomParams("yandex_rewarded_id", "замените_на_свой_id");
+    
+    // Установите для показа рекламы от Mintegral
+    YabbiAds.setCustomParams("mintegral_app_id", "замените_на_свой_id");
+    YabbiAds.setCustomParams("mintegral_app_key", "замените_на_свой_id");
+    
+    // Установите для показа полноэкранной рекламы Mintegral
+    YabbiAds.setCustomParams("mintegral_interstitial_placement_id", "замените_на_свой_id");
+    YabbiAds.setCustomParams("mintegral_interstitial_id", "замените_на_свой_id");
+    
+    // Установите для показа рекламы с вознаграждением Mintegral
+    YabbiAds.setCustomParams("mintegral_rewarded_placement_id", "замените_на_свой_id");
+    YabbiAds.setCustomParams("mintegral_rewarded_id", "замените_на_свой_id");
 }
 ```
 
@@ -122,7 +166,7 @@ protected void onCreate(Bundle savedInstanceState) {
 2. Замените YOUR_INTERSTITIAL_ID на ключ соответствующий баннерной рекламе из [личного кабинета](https://mobileadx.ru).
 3. Замените YOUR_REWARDED_ID на ключ соответствующий видео с вознаграждением из [личного кабинета](https://mobileadx.ru).
 
-## Шаг 3. Запрос геолокации пользователя
+## Шаг 4. Запрос геолокации пользователя
 Для эффективного таргетирования рекламы SDK собирает данные геолокации.  
 Начиная с **Android 6.0 (API level 23)** для доступа к геолокации требуется разрешение пользователя.
 Для запроса разрешения необходимо добавить следующий код в вашей **Activity**
@@ -143,7 +187,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
 
 Вы можете ознакомиться подробнее о геолокации и разрешениях на [5 шаге](Шаг-5.-Подготовьте-ваше-приложение-к-публикации).
 
-## Шаг 4. Настройка типов рекламы
+## Шаг 5. Настройка типов рекламы
 YabbiAds SDK готов к использованию.  
 YabbiAds предоставляет на выбор 2 типа рекламы.
 Вы можете ознакомиться с установкой каждого типа в соответствующей документации:
@@ -151,7 +195,7 @@ YabbiAds предоставляет на выбор 2 типа рекламы.
 1. [Полноэкранный баннер](INTERSTITIAL_DOC.md)
 2. [Полноэкранный видео баннер с вознаграждением](REWARDED_VIDEO_DOC.md)
 
-## Шаг 5. Подготовьте ваше приложение к публикации
+## Шаг 6. Подготовьте ваше приложение к публикации
 
 В соответствии с [политикой Google](https://support.google.com/googleplay/android-developer/answer/9857753?hl=ru), разрешения на определения местоположения могут запрашиваться только для функций, имеющих отношение к основному функционалу приложения. Вы не можете запрашивать доступ к данным о местоположении исключительно с целью предоставления рекламы или аналитики.
 
