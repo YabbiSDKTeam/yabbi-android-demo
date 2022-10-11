@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.Yabbiadsandroiddemo">
         <activity
             android:name=".MainActivity"
@@ -33,5 +34,23 @@
         <meta-data
             android:name = "YANDEX_REWARDED_VALUE"
             android:value = "${YANDEX_REWARDED_ID}"/>
+        <meta-data
+            android:name = "MINTEGRAL_APP_VALUE"
+            android:value = "${MINTEGRAL_APP_ID}"/>
+        <meta-data
+            android:name = "MINTEGRAL_APP_KEY_VALUE"
+            android:value = "${MINTEGRAL_APP_KEY}"/>
+        <meta-data
+            android:name = "MINTEGRAL_INTERSTITIAL_PLACEMENT_VALUE"
+            android:value = "${MINTEGRAL_INTERSTITIAL_PLACEMENT_ID}"/>
+        <meta-data
+            android:name = "MINTEGRAL_INTERSTITIAL_VALUE"
+            android:value = "${MINTEGRAL_INTERSTITIAL_ID}"/>
+        <meta-data
+            android:name = "MINTEGRAL_REWARDED_PLACEMENT_VALUE"
+            android:value = "${MINTEGRAL_REWARDED_PLACEMENT_ID}"/>
+        <meta-data
+            android:name = "MINTEGRAL_REWARDED_VALUE"
+            android:value = "${MINTEGRAL_REWARDED_ID}"/>
     </application>
 </manifest>

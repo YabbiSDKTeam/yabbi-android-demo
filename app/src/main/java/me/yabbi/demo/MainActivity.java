@@ -37,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
     private String YANDEX_INTERSTITIAL_ID;
     private String YANDEX_REWARDED_ID;
 
+    private String MINTEGRAL_APP_ID;
+    private String MINTEGRAL_APP_KEY;
+    private String MINTEGRAL_INTERSTITIAL_PLACEMENT_ID;
+    private String MINTEGRAL_INTERSTITIAL_ID;
+    private String MINTEGRAL_REWARDED_PLACEMENT_ID;
+    private String MINTEGRAL_REWARDED_ID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
             YABBI_REWARDED_ID = info.metaData.getString("YABBI_REWARDED_VALUE", "");
             YANDEX_INTERSTITIAL_ID = info.metaData.getString("YANDEX_INTERSTITIAL_VALUE", "");
             YANDEX_REWARDED_ID = info.metaData.getString("YANDEX_REWARDED_VALUE", "");
+            MINTEGRAL_APP_ID = info.metaData.getString("MINTEGRAL_APP_VALUE", "");
+            MINTEGRAL_APP_KEY = info.metaData.getString("MINTEGRAL_APP_KEY_VALUE", "");
+            MINTEGRAL_INTERSTITIAL_PLACEMENT_ID = info.metaData.getString("MINTEGRAL_INTERSTITIAL_PLACEMENT_VALUE", "");
+            MINTEGRAL_INTERSTITIAL_ID = info.metaData.getString("MINTEGRAL_INTERSTITIAL_VALUE", "");
+            MINTEGRAL_REWARDED_PLACEMENT_ID = info.metaData.getString("MINTEGRAL_REWARDED_PLACEMENT_VALUE", "");
+            MINTEGRAL_REWARDED_ID = info.metaData.getString("MINTEGRAL_REWARDED_VALUE", "");
 
         } catch (PackageManager.NameNotFoundException e) {
            e.printStackTrace();
@@ -125,6 +138,14 @@ public class MainActivity extends AppCompatActivity {
         YabbiAds.initialize(config);
         YabbiAds.setCustomParams("yandex_interstitial_id", YANDEX_INTERSTITIAL_ID);
         YabbiAds.setCustomParams("yandex_rewarded_id", YANDEX_REWARDED_ID);
+
+
+        YabbiAds.setCustomParams("mintegral_app_id", MINTEGRAL_APP_ID);
+        YabbiAds.setCustomParams("mintegral_app_key", MINTEGRAL_APP_KEY);
+        YabbiAds.setCustomParams("mintegral_interstitial_placement_id", MINTEGRAL_INTERSTITIAL_PLACEMENT_ID);
+        YabbiAds.setCustomParams("mintegral_interstitial_id", MINTEGRAL_INTERSTITIAL_ID);
+        YabbiAds.setCustomParams("mintegral_rewarded_placement_id", MINTEGRAL_REWARDED_PLACEMENT_ID);
+        YabbiAds.setCustomParams("mintegral_rewarded_id", MINTEGRAL_REWARDED_ID);
 
 
         writeLog("PublisherID: " + publisherID + "\nInterstitialID: " + interstitialID + "\nRewardedID: " + rewardedID, true);
