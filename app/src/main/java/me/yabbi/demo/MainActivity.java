@@ -1,262 +1,189 @@
 package me.yabbi.demo;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.HashMap;
-
 import me.yabbi.ads.YabbiAds;
 import me.yabbi.ads.YabbiConfiguration;
-import me.yabbi.ads.common.InterstitialAdCallbacks;
-import me.yabbi.ads.common.RewardedAdCallbacks;
+import me.yabbi.ads.YbiAdType;
+import me.yabbi.ads.YbiInterstitialListener;
+import me.yabbi.ads.YbiRewardedListener;
+import me.yabbi.ads.common.YbiAdaptersParameters;
+import me.yabbi.ads.consent.YbiConsentBuilder;
+import me.yabbi.ads.consent.YbiConsentListener;
+import me.yabbi.ads.consent.YbiConsentManager;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText publisherField;
-    private EditText interstitialField;
-    private EditText rewardedField;
+
+
+    final YbiConsentManager consentManager = YbiConsentManager.getInstance(this);
+
     private TextView logger;
-
-
-    private String YABBI_PUBLISHER_ID;
-    private String YABBI_INTERSTITIAL_ID;
-    private String YABBI_REWARDED_ID;
-    private String YANDEX_INTERSTITIAL_ID;
-    private String YANDEX_REWARDED_ID;
-
-    private String MINTEGRAL_APP_ID;
-    private String MINTEGRAL_APP_KEY;
-    private String MINTEGRAL_INTERSTITIAL_PLACEMENT_ID;
-    private String MINTEGRAL_INTERSTITIAL_ID;
-    private String MINTEGRAL_REWARDED_PLACEMENT_ID;
-    private String MINTEGRAL_REWARDED_ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setupKeyboardListener(findViewById(R.id.fields).getRootView());
-        setupVariables();
-        setupUI();
-        setupYabbi();
-        setupYabbiCallbacks();
 
+        setButtons();
+        setListeners();
+
+        initializeYabbi();
     }
 
-    private void setupVariables() {
+    private void setButtons() {
+        findViewById(R.id.load_interstitial_button).setOnClickListener(v -> YabbiAds.loadAd(this, YbiAdType.INTERSTITIAL));
+        findViewById(R.id.show_interstitial_button).setOnClickListener(v -> YabbiAds.showAd(this, YbiAdType.INTERSTITIAL));
+        findViewById(R.id.destroy_interstitial_button).setOnClickListener(v -> YabbiAds.destroyAd(YbiAdType.INTERSTITIAL));
+
+        findViewById(R.id.load_rewarded_button).setOnClickListener(v -> YabbiAds.loadAd(this, YbiAdType.REWARDED));
+        findViewById(R.id.show_rewarded_button).setOnClickListener(v -> YabbiAds.showAd(this, YbiAdType.REWARDED));
+        findViewById(R.id.destroy_rewarded_button).setOnClickListener(v -> YabbiAds.destroyAd(YbiAdType.REWARDED));
+
+        findViewById(R.id.show_consent_button).setOnClickListener(v -> consentManager.showConsentWindow());
+
+        logger = findViewById(R.id.events);
+    }
+
+    private void initializeYabbi() {
         try {
             ApplicationInfo info = getPackageManager().getApplicationInfo(this.getApplicationContext().getPackageName(), PackageManager.GET_META_DATA);
-            YABBI_PUBLISHER_ID = info.metaData.getString("YABBI_PUBLISHER_VALUE", "");
-            YABBI_INTERSTITIAL_ID = info.metaData.getString("YABBI_INTERSTITIAL_VALUE", "");
-            YABBI_REWARDED_ID = info.metaData.getString("YABBI_REWARDED_VALUE", "");
-            YANDEX_INTERSTITIAL_ID = info.metaData.getString("YANDEX_INTERSTITIAL_VALUE", "");
-            YANDEX_REWARDED_ID = info.metaData.getString("YANDEX_REWARDED_VALUE", "");
-            MINTEGRAL_APP_ID = info.metaData.getString("MINTEGRAL_APP_VALUE", "");
-            MINTEGRAL_APP_KEY = info.metaData.getString("MINTEGRAL_APP_KEY_VALUE", "");
-            MINTEGRAL_INTERSTITIAL_PLACEMENT_ID = info.metaData.getString("MINTEGRAL_INTERSTITIAL_PLACEMENT_VALUE", "");
-            MINTEGRAL_INTERSTITIAL_ID = info.metaData.getString("MINTEGRAL_INTERSTITIAL_VALUE", "");
-            MINTEGRAL_REWARDED_PLACEMENT_ID = info.metaData.getString("MINTEGRAL_REWARDED_PLACEMENT_VALUE", "");
-            MINTEGRAL_REWARDED_ID = info.metaData.getString("MINTEGRAL_REWARDED_VALUE", "");
 
-        } catch (PackageManager.NameNotFoundException e) {
-           e.printStackTrace();
+            final String YABBI_PUBLISHER_ID = info.metaData.getString("YABBI_PUBLISHER_ID", "");
+            final String YABBI_INTERSTITIAL_ID = info.metaData.getString("YABBI_INTERSTITIAL_ID", "");
+            final String YABBI_REWARDED_ID = info.metaData.getString("YABBI_REWARDED_ID", "");
+            final String YANDEX_INTERSTITIAL_ID = info.metaData.getString("YANDEX_INTERSTITIAL_ID", "");
+            final String YANDEX_REWARDED_ID = info.metaData.getString("YANDEX_REWARDED_ID", "");
+            final String MINTEGRAL_APP_ID = info.metaData.getString("MINTEGRAL_APP_ID", "");
+            final String MINTEGRAL_API_KEY = info.metaData.getString("MINTEGRAL_API_KEY", "");
+            final String MINTEGRAL_INTERSTITIAL_PLACEMENT_ID = info.metaData.getString("MINTEGRAL_INTERSTITIAL_PLACEMENT_ID", "");
+            final String MINTEGRAL_INTERSTITIAL_ID = info.metaData.getString("MINTEGRAL_INTERSTITIAL_ID", "");
+            final String MINTEGRAL_REWARDED_PLACEMENT_ID = info.metaData.getString("MINTEGRAL_REWARDED_PLACEMENT_ID", "");
+            final String MINTEGRAL_REWARDED_ID = info.metaData.getString("MINTEGRAL_REWARDED_ID", "");
+
+            YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, YANDEX_INTERSTITIAL_ID);
+            YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, YANDEX_REWARDED_ID);
+
+            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, MINTEGRAL_APP_ID);
+            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, MINTEGRAL_API_KEY);
+            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, MINTEGRAL_INTERSTITIAL_PLACEMENT_ID);
+            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, MINTEGRAL_INTERSTITIAL_ID);
+            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, MINTEGRAL_REWARDED_PLACEMENT_ID);
+            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, MINTEGRAL_REWARDED_ID);
+
+            final YabbiConfiguration config = new YabbiConfiguration(YABBI_PUBLISHER_ID, YABBI_INTERSTITIAL_ID, YABBI_REWARDED_ID);
+
+            YabbiAds.setUserConsent(consentManager.hasConsent());
+
+            YabbiAds.initialize(this, config);
+
+            logEvent("YabbiAds initialized");
+
+            consentManager.loadManager();
+        } catch (PackageManager.NameNotFoundException error) {
+            logEvent("Parameters not found. See instruction in DEMO_APP_INSTALLATION.md.");
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        switch (requestCode) {
-            case YabbiAds.INTERSTITIAL:
-                YabbiAds.loadAd(this, YabbiAds.INTERSTITIAL);
-                writeLog("Inerstitial loading start", true);
-                break;
-            case YabbiAds.REWARDED:
-                YabbiAds.loadAd(this, YabbiAds.REWARDED);
-                writeLog("Rewarded loading start", true);
-                break;
-        }
-    }
-
-    private void setupUI() {
-        publisherField = findViewById(R.id.publisher_filed);
-        interstitialField = findViewById(R.id.interstitial_field);
-        rewardedField = findViewById(R.id.rewarded_ad);
-
-        Button resetButton = findViewById(R.id.reset_button);
-        Button interstitialButton = findViewById(R.id.interstitial_button);
-        Button rewardedButton = findViewById(R.id.rewarded_button);
-
-        logger = findViewById(R.id.logger);
-
-        publisherField.setText(YABBI_PUBLISHER_ID);
-        interstitialField.setText(YABBI_INTERSTITIAL_ID);
-        rewardedField.setText(YABBI_REWARDED_ID);
-
-        resetButton.setOnClickListener(
-                v -> setupYabbi()
-        );
-
-        interstitialButton.setOnClickListener(
-                v -> {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, YabbiAds.INTERSTITIAL);
-                    }
-                }
-        );
-
-        rewardedButton.setOnClickListener(
-                v -> {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, YabbiAds.REWARDED);
-                    }
-                }
-        );
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void setupYabbi() {
-        final String publisherID = publisherField.getText().toString();
-        final String interstitialID = interstitialField.getText().toString();
-        final String rewardedID = rewardedField.getText().toString();
-
-        final YabbiConfiguration config = new YabbiConfiguration(publisherID, interstitialID, rewardedID);
-        YabbiAds.initialize(config);
-        YabbiAds.setCustomParams("yandex_interstitial_id", YANDEX_INTERSTITIAL_ID);
-        YabbiAds.setCustomParams("yandex_rewarded_id", YANDEX_REWARDED_ID);
-
-
-        YabbiAds.setCustomParams("mintegral_app_id", MINTEGRAL_APP_ID);
-        YabbiAds.setCustomParams("mintegral_app_key", MINTEGRAL_APP_KEY);
-        YabbiAds.setCustomParams("mintegral_interstitial_placement_id", MINTEGRAL_INTERSTITIAL_PLACEMENT_ID);
-        YabbiAds.setCustomParams("mintegral_interstitial_id", MINTEGRAL_INTERSTITIAL_ID);
-        YabbiAds.setCustomParams("mintegral_rewarded_placement_id", MINTEGRAL_REWARDED_PLACEMENT_ID);
-        YabbiAds.setCustomParams("mintegral_rewarded_id", MINTEGRAL_REWARDED_ID);
-
-
-        writeLog("PublisherID: " + publisherID + "\nInterstitialID: " + interstitialID + "\nRewardedID: " + rewardedID, true);
-    }
-
-    private void setupYabbiCallbacks() {
-        YabbiAds.setInterstitialCallbacks(new InterstitialAdCallbacks() {
+    private void setListeners() {
+        final YbiConsentBuilder builder = new YbiConsentBuilder()
+                .appendGDPR(true)
+                .appendName("Demo app name");
+        consentManager.registerCustomVendor(builder);
+        consentManager.setListener(new YbiConsentListener() {
             @Override
-            public void onInterstitialLoaded() {
-                writeLog("onInterstitialLoaded", false);
-                if (YabbiAds.isAdLoaded(YabbiAds.INTERSTITIAL))
-                    YabbiAds.showAd(MainActivity.this, YabbiAds.INTERSTITIAL);
+            public void onConsentManagerLoaded() {
+                logEvent("onConsentManagerLoaded");
             }
 
             @Override
-            public void onInterstitialLoadFail(String s) {
-                writeLog("onInterstitialLoadFail: " + s, false);
+            public void onConsentManagerLoadFailed(String error) {
+                logEvent("onConsentManagerLoadFailed - " + error);
+            }
+
+            @Override
+            public void onConsentWindowShown() {
+                logEvent("onConsentWindowShown");
+            }
+
+            @Override
+            public void onConsentManagerShownFailed(String error) {
+                logEvent("onConsentManagerShownFailed - " + error);
+            }
+
+            @Override
+            public void onConsentWindowClosed(boolean hasConsent) {
+                YabbiAds.setUserConsent(hasConsent);
+                logEvent("onConsentWindowClosed - Has User Consent: " + hasConsent);
+            }
+        });
+
+        YabbiAds.setInterstitialListener(new YbiInterstitialListener() {
+            @Override
+            public void onInterstitialLoaded() {
+                logEvent("onInterstitialLoaded");
+            }
+
+            @Override
+            public void onInterstitialLoadFail(String error) {
+                logEvent("onInterstitialLoadFail: " + error);
             }
 
             @Override
             public void onInterstitialShown() {
-                writeLog("onInterstitialShown", false);
+                logEvent("onInterstitialShown");
             }
 
             @Override
-            public void onInterstitialShowFailed(String s) {
-                writeLog("onInterstitialShowFailed: " + s, false);
+            public void onInterstitialShowFailed(String error) {
+                logEvent("onInterstitialShowFailed: " + error);
             }
 
             @Override
             public void onInterstitialClosed() {
-                writeLog("onInterstitialClosed", false);
+                logEvent("onInterstitialClosed");
             }
         });
 
-        YabbiAds.setRewardedCallbacks(new RewardedAdCallbacks() {
+        YabbiAds.setRewardedListener(new YbiRewardedListener() {
             @Override
             public void onRewardedLoaded() {
-                writeLog("onRewardedLoaded", false);
-                if (YabbiAds.isAdLoaded(YabbiAds.REWARDED))
-                    YabbiAds.showAd(MainActivity.this, YabbiAds.REWARDED);
+                logEvent("onRewardedLoaded");
             }
 
             @Override
-            public void onRewardedLoadFail(String s) {
-                writeLog("onRewardedLoadFail: " + s, false);
+            public void onRewardedLoadFail(String error) {
+                logEvent("onRewardedLoadFail: " + error);
             }
 
             @Override
             public void onRewardedShown() {
-                writeLog("onRewardedShown", false);
+                logEvent("onRewardedShown");
             }
 
             @Override
-            public void onRewardedShowFailed(String s) {
-                writeLog("onRewardedShowFailed: " + s, false);
+            public void onRewardedShowFailed(String error) {
+                logEvent("onRewardedShowFailed: " + error);
             }
 
             @Override
             public void onRewardedClosed() {
-                writeLog("onRewardedClosed", false);
+                logEvent("onRewardedClosed");
             }
 
             @Override
             public void onRewardedFinished() {
-                writeLog("onRewardedFinished", false);
+                logEvent("onRewardedFinished");
             }
         });
     }
 
-    public void setupKeyboardListener(View view) {
-
-        // Set up touch listener for non-text box views to hide keyboard.
-        if (!(view instanceof EditText)) {
-            view.setOnTouchListener(new View.OnTouchListener() {
-                @SuppressLint("ClickableViewAccessibility")
-                public boolean onTouch(View v, MotionEvent event) {
-                    hideSoftKeyboard(MainActivity.this);
-                    return false;
-                }
-            });
-        }
-
-        // If a layout container, iterate over children and seed recursion.
-        if (view instanceof ViewGroup) {
-            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-                View innerView = ((ViewGroup) view).getChildAt(i);
-                setupKeyboardListener(innerView);
-            }
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    public void writeLog(String message, boolean clear) {
-        if (clear) {
-            logger.setText(message);
-        } else {
-            final String text = logger.getText().toString();
-            logger.setText(text + "\n" + message);
-        }
-    }
-
-    public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
-        if (inputMethodManager.isAcceptingText()) {
-            inputMethodManager.hideSoftInputFromWindow(
-                    activity.getCurrentFocus().getWindowToken(),
-                    0
-            );
-        }
+    private void logEvent(String message) {
+        final String text = logger.getText().toString();
+        logger.setText(String.format("%s\n%s", text, message));
     }
 }

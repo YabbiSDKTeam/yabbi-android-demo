@@ -2,7 +2,7 @@
 
 ## Руководство по Интеграции
 
-Версия релиза **2.2.2** | Дата релиза **11.10.2022**
+Версия релиза **2.3.0** | Дата релиза **26.11.2022**
 
 > Минимальные требования:
 >
@@ -60,7 +60,7 @@
 
 
 2. Вставьте следующий код в app-level build.gradle
-    ```gradle
+   ```gradle
     // Пример app-level build.gradle (excerpt)
     android {
         // ... другие опции
@@ -81,19 +81,18 @@
         // ... другие зависимости проекта
 
         // Используйте для подключения всех рекламных адаптеров
-        implementation 'me.yabbi.ads:sdk:2.2.2'
+        implementation 'me.yabbi.ads:sdk:+'
 
-        // Используйте для подключения рекламных адаптеров выборочно
-        implementation 'me.yabbi.ads:core:1.2.2'
+        // Добавьте если хотите подключить рекламные адаптеры выборочно
+        implementation 'me.yabbi.ads:core:+'
 
         // Добавьте если вы испольузете адаптер для Яндекса
-        implementation 'me.yabbi.ads.networks:yandex:1.0.0'
+        implementation 'me.yabbi.ads.networks:yandex:+'
    
         // Добавьте если вы испольузете адаптер для Mintegral
-        implementation 'me.yabbi.ads.networks:mintegral:1.0.0'
-
+        implementation 'me.yabbi.ads.networks:mintegral:+'
     }
-    ```
+   ```
 
 Как только gradle config будет сгенерирован, сохраните файл и нажмите **Gradle sync**.
 
@@ -138,53 +137,53 @@
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    final YabbiConfiguration config = new YabbiConfiguration("YOUR_PUBLISHER_ID", "YOUR_INTERSTITIAL_ID", "YOUR_REWARDED_ID");
-    YabbiAds.initialize(config);
-
-    // Установите для показа полноэкранной рекламы Яндекса
-    // YabbiAds.setCustomParams("yandex_interstitial_id", "замените_на_свой_id");
-
-    // Установите для показа рекламы с вознаграждением Яндекса
-    // YabbiAds.setCustomParams("yandex_rewarded_id", "замените_на_свой_id");
     
+    // Установите для показа полноэкранной рекламы Яндекса
+    YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
+    
+    // Установите для показа рекламы с вознаграждением Яндекса
+    YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, "замените_на_свой_id");
+
     // Установите для показа рекламы от Mintegral
-    // YabbiAds.setCustomParams("mintegral_app_id", "замените_на_свой_id");
-    // YabbiAds.setCustomParams("mintegral_app_key", "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
     
     // Установите для показа полноэкранной рекламы Mintegral
-    // YabbiAds.setCustomParams("mintegral_interstitial_placement_id", "замените_на_свой_id");
-    // YabbiAds.setCustomParams("mintegral_interstitial_id", "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
     
     // Установите для показа рекламы с вознаграждением Mintegral
-    // YabbiAds.setCustomParams("mintegral_rewarded_placement_id", "замените_на_свой_id");
-    // YabbiAds.setCustomParams("mintegral_rewarded_id", "замените_на_свой_id");
-}
-```
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
 
-1. Замените YOUR_PUBLISHER_ID на ключ издателя из [личного кабинета](https://mobileadx.ru).
-2. Замените YOUR_INTERSTITIAL_ID на ключ соответствующий баннерной рекламе из [личного кабинета](https://mobileadx.ru).
-3. Замените YOUR_REWARDED_ID на ключ соответствующий видео с вознаграждением из [личного кабинета](https://mobileadx.ru).
-
-## Шаг 4. Запрос геолокации пользователя
-Для эффективного таргетирования рекламы SDK собирает данные геолокации.  
-Начиная с **Android 6.0 (API level 23)** для доступа к геолокации требуется разрешение пользователя.
-Для запроса разрешения необходимо добавить следующий код в вашей **Activity**
-```java
-if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-    this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-}
-```
-Для обработки результата добавьте слудющий код в **Activity**
-```java
-@Override
-public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    final YabbiConfiguration config = new YabbiConfiguration(
+        "YOUR_PUBLISHER_ID", 
+        "YOUR_INTERSTITIAL_ID", 
+        "YOUR_REWARDED_ID"
+    );
     
-    // ваш код
+    // Установите если пользователь дал согласие на сбор персональных данных
+    YabbiAds.setUserConsent(true);
+    
+    YabbiAds.initialize(this, config);
 }
 ```
 
-Вы можете ознакомиться подробнее о геолокации и разрешениях на [5 шаге](Шаг-5.-Подготовьте-ваше-приложение-к-публикации).
+1. Замените **YOUR_PUBLISHER_ID** на ключ издателя из [личного кабинета](https://mobileadx.ru).
+2. Замените **YOUR_INTERSTITIAL_ID** на ключ соответствующий баннерной рекламе из [личного кабинета](https://mobileadx.ru).
+3. Замените **YOUR_REWARDED_ID** на ключ соответствующий видео с вознаграждением из [личного кабинета](https://mobileadx.ru).
+4. С помощью метода **setCustomParams** установите параметры для показа рекламы из других рекламных сетей.
+
+## Шаг 4. GDPR и CCPA
+**GDPR** - Это набор правил, призванных дать гражданам ЕС больше контроля над своими личными данными. Любые издатели приложений, которые созданы в ЕС или имеющие пользователей, базирующихся в Европе, обязаны соблюдать GDPR или рискуют столкнуться с большими штрафами
+
+Для того чтобы **YabbiAds** и наши поставщики рекламы могли предоставлять рекламу, которая наиболее релевантна для ваших пользователей, как издателю мобильных приложений, вам необходимо получить явное согласие пользователей в регионах, попадающих под действие законов GDPR и CCPA.
+
+Чтобы получить согласие на сбор персональных данных ваших пользователей, мы предлагаем вам воспользоваться готовым решением - **YbiConsentManager**.
+
+**YbiConsentManager** поставляется с заранее подготовленным окном согласия, которое вы можете легко показать своим пользователям. Это означает, что вам больше не нужно создавать собственное окно согласия.
+
+Ознакомьтесь с использованием **YbiConsentManager** по ссылке - [клик](CONSENT_MANAGER_DOC.md).
 
 ## Шаг 5. Настройка типов рекламы
 YabbiAds SDK готов к использованию.  
