@@ -174,7 +174,7 @@ consentManager.registerCustomVendor(builder);
 Чтобы показать экран, необходимо вызывать метод **showConsentWindow**.
 
 ```java
-consentManager.showConsentWindow()
+consentManager.showConsentWindow();
 ```
 
 ## Вспомогательные методы
