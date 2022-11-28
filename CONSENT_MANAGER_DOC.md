@@ -107,9 +107,8 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 
 ## Методы обратного вызова
-Для работы с рекламой необходимо предоставить класс для передачи событий жизненного цикла рекламного контейнера.
-Для инициализации рекламного контейнера выполните следующие действия:
-```swift
+Для обработки событий жизненного цикла необходимо предоставить класс для работы.
+```java
 consentManager.setListener(new YbiConsentListener() {
     @Override
     public void onConsentManagerLoaded() {
@@ -160,7 +159,7 @@ consentManager.registerCustomVendor(builder);
 * **appendGDPR** - включает или выключает **GDPR**.
 
 Полный пример представлен ниже:
-```swift
+```java
 final YbiConsentBuilder builder = new YbiConsentBuilder()
         .appendPolicyURL("https://yabbi.me/privacy-policies")
         .appendGDPR(true)
