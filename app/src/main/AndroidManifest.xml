@@ -22,38 +22,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data
-            android:name = "YABBI_PUBLISHER_ID"
-            android:value = "${YABBI_PUBLISHER_ID}"/>
-        <meta-data
-            android:name = "YABBI_INTERSTITIAL_ID"
-            android:value = "${YABBI_INTERSTITIAL_ID}"/>
-        <meta-data
-            android:name = "YABBI_REWARDED_ID"
-            android:value = "${YABBI_REWARDED_ID}"/>
-        <meta-data
-            android:name = "YANDEX_INTERSTITIAL_ID"
-            android:value = "${YANDEX_INTERSTITIAL_ID}"/>
-        <meta-data
-            android:name = "YANDEX_REWARDED_ID"
-            android:value = "${YANDEX_REWARDED_ID}"/>
-        <meta-data
-            android:name = "MINTEGRAL_APP_ID"
-            android:value = "${MINTEGRAL_APP_ID}"/>
-        <meta-data
-            android:name = "MINTEGRAL_API_KEY"
-            android:value = "${MINTEGRAL_API_KEY}"/>
-        <meta-data
-            android:name = "MINTEGRAL_INTERSTITIAL_PLACEMENT_ID"
-            android:value = "${MINTEGRAL_INTERSTITIAL_PLACEMENT_ID}"/>
-        <meta-data
-            android:name = "MINTEGRAL_INTERSTITIAL_ID"
-            android:value = "${MINTEGRAL_INTERSTITIAL_ID}"/>
-        <meta-data
-            android:name = "MINTEGRAL_REWARDED_PLACEMENT_ID"
-            android:value = "${MINTEGRAL_REWARDED_PLACEMENT_ID}"/>
-        <meta-data
-            android:name = "MINTEGRAL_REWARDED_ID"
-            android:value = "${MINTEGRAL_REWARDED_ID}"/>
     </application>
 </manifest>

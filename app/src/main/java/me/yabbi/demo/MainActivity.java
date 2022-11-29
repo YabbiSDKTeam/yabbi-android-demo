@@ -1,7 +1,5 @@
 package me.yabbi.demo;
 
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -50,43 +48,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeYabbi() {
-        try {
-            ApplicationInfo info = getPackageManager().getApplicationInfo(this.getApplicationContext().getPackageName(), PackageManager.GET_META_DATA);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, BuildConfig.YANDEX_INTERSTITIAL_ID);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, BuildConfig.YANDEX_REWARDED_ID);
 
-            final String YABBI_PUBLISHER_ID = info.metaData.getString("YABBI_PUBLISHER_ID", "");
-            final String YABBI_INTERSTITIAL_ID = info.metaData.getString("YABBI_INTERSTITIAL_ID", "");
-            final String YABBI_REWARDED_ID = info.metaData.getString("YABBI_REWARDED_ID", "");
-            final String YANDEX_INTERSTITIAL_ID = info.metaData.getString("YANDEX_INTERSTITIAL_ID", "");
-            final String YANDEX_REWARDED_ID = info.metaData.getString("YANDEX_REWARDED_ID", "");
-            final String MINTEGRAL_APP_ID = info.metaData.getString("MINTEGRAL_APP_ID", "");
-            final String MINTEGRAL_API_KEY = info.metaData.getString("MINTEGRAL_API_KEY", "");
-            final String MINTEGRAL_INTERSTITIAL_PLACEMENT_ID = info.metaData.getString("MINTEGRAL_INTERSTITIAL_PLACEMENT_ID", "");
-            final String MINTEGRAL_INTERSTITIAL_ID = info.metaData.getString("MINTEGRAL_INTERSTITIAL_ID", "");
-            final String MINTEGRAL_REWARDED_PLACEMENT_ID = info.metaData.getString("MINTEGRAL_REWARDED_PLACEMENT_ID", "");
-            final String MINTEGRAL_REWARDED_ID = info.metaData.getString("MINTEGRAL_REWARDED_ID", "");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, BuildConfig.MINTEGRAL_APP_ID);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, BuildConfig.MINTEGRAL_API_KEY);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, BuildConfig.MINTEGRAL_INTERSTITIAL_PLACEMENT_ID);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, BuildConfig.MINTEGRAL_INTERSTITIAL_ID);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, BuildConfig.MINTEGRAL_REWARDED_PLACEMENT_ID);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, BuildConfig.MINTEGRAL_REWARDED_ID);
 
-            YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, YANDEX_INTERSTITIAL_ID);
-            YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, YANDEX_REWARDED_ID);
+        final YabbiConfiguration config = new YabbiConfiguration(BuildConfig.YABBI_PUBLISHER_ID, BuildConfig.YABBI_INTERSTITIAL_ID, BuildConfig.YABBI_REWARDED_ID);
 
-            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, MINTEGRAL_APP_ID);
-            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, MINTEGRAL_API_KEY);
-            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, MINTEGRAL_INTERSTITIAL_PLACEMENT_ID);
-            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, MINTEGRAL_INTERSTITIAL_ID);
-            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, MINTEGRAL_REWARDED_PLACEMENT_ID);
-            YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, MINTEGRAL_REWARDED_ID);
+        YabbiAds.setUserConsent(consentManager.hasConsent());
 
-            final YabbiConfiguration config = new YabbiConfiguration(YABBI_PUBLISHER_ID, YABBI_INTERSTITIAL_ID, YABBI_REWARDED_ID);
+        YabbiAds.initialize(this, config);
 
-            YabbiAds.setUserConsent(consentManager.hasConsent());
+        logEvent("YabbiAds initialized");
 
-            YabbiAds.initialize(this, config);
-
-            logEvent("YabbiAds initialized");
-
-            consentManager.loadManager();
-        } catch (PackageManager.NameNotFoundException error) {
-            logEvent("Parameters not found. See instruction in DEMO_APP_INSTALLATION.md.");
-        }
+        consentManager.loadManager();
     }
 
     private void setListeners() {
