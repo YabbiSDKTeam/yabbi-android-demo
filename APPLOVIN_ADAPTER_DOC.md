@@ -113,10 +113,6 @@
 - Полноэкранный баннер
 - Полноэкранный видео баннер с вознаграждением
 
-
-Ознакомьтесь с официальной документацией по каждому из типов рекламы:
-- [Полноэкранный видео баннер с вознаграждением](https://dash.applovin.com/documentation/mediation/android/ad-formats/rewarded-ads)
-
 ## MaxInterstitialAd
 > [Документация AppLovin](https://dash.applovin.com/documentation/mediation/android/ad-formats/interstitials)
 
@@ -164,7 +160,7 @@ interstitialAd.loadAd();
 ```
 
 ## MaxRewardedAd
-> [Документация AppLovin](https://dash.applovin.com/documentation/mediation/android/ad-formats/rewarded-ads)
+- [Документация AppLovin](https://dash.applovin.com/documentation/mediation/android/ad-formats/rewarded-ads)
 
 Для инициализации **YabbiAds** следуйте следующим инструкциям:
 
