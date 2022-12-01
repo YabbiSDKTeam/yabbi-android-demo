@@ -10,7 +10,7 @@
 По этой причине убедитесь, что вы используете версию Gradle,
 которая соответствует одной из перечисленных [здесь](https://developer.android.com/studio/releases/gradle-plugin#4-0-0).
 
-Вы можете использовать радаптеры для медиации выборочно. Чем больше их подключено - тем больше филрейт.
+Вы можете использовать адаптеры для медиации выборочно. Чем больше их подключено - тем больше филрейт.
 
 В зависимости от используемой версии Android Studio вставьте зависимость в файл Gradle:
 
@@ -131,24 +131,6 @@
 interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.publisherID, "YOUR_PUBLISHER_ID");
 interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.interstitialId, "YOUR_INTERSTITIAL_ID");
 interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.rewardedId, "YOUR_REWARDED_ID");
-
- // Установите для показа полноэкранной рекламы Яндекса
-interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
-    
- // Установите для показа рекламы с вознаграждением Яндекса
-interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.yandexRewardedID, "замените_на_свой_id");
-
- // Установите для показа рекламы от Mintegral
-interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
-interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
-    
- // Установите для показа полноэкранной рекламы Mintegral
-interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
-interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
-    
- // Установите для показа рекламы с вознаграждением Mintegral
-interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
-interstitialAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
 ```
 3. Замените **YOUR_PUBLISHER_ID** на ключ издателя из [личного кабинета](https://mobileadx.ru).
 4. Замените **YOUR_INTERSTITIAL_ID** на ключ соответствующий баннерной рекламе из [личного кабинета](https://mobileadx.ru).
@@ -177,24 +159,6 @@ interstitialAd.loadAd();
 rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.publisherID, "YOUR_PUBLISHER_ID");
 rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.interstitialId, "YOUR_INTERSTITIAL_ID");
 rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.rewardedId, "YOUR_REWARDED_ID");
-
- // Установите для показа полноэкранной рекламы Яндекса
-rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
-    
- // Установите для показа рекламы с вознаграждением Яндекса
-rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.yandexRewardedID, "замените_на_свой_id");
-
- // Установите для показа рекламы от Mintegral
-rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
-rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
-    
- // Установите для показа полноэкранной рекламы Mintegral
-rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
-rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
-    
- // Установите для показа рекламы с вознаграждением Mintegral
-rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
-rewardedAd.setLocalExtraParameter(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
 ```
 3. Замените **YOUR_PUBLISHER_ID** на ключ издателя из [личного кабинета](https://mobileadx.ru).
 4. Замените **YOUR_INTERSTITIAL_ID** на ключ соответствующий баннерной рекламе из [личного кабинета](https://mobileadx.ru).
