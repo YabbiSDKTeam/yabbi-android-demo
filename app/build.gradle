@@ -18,12 +18,12 @@ def MINTEGRAL_REWARDED_PLACEMENT_ID = properties.getProperty('MINTEGRAL_REWARDED
 def MINTEGRAL_REWARDED_ID = properties.getProperty('MINTEGRAL_REWARDED_ID') ?: ""
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "me.yabbi.demo"
         minSdk 19
-        targetSdk 31
+        targetSdk 33
         versionCode 1
         versionName "1.0.0"
         multiDexEnabled true
