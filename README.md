@@ -268,10 +268,10 @@ YabbiAds.enableDebug(true)
 
 
 **Если вы не используете местоположения как одну из основных функций вашего приложения:**
-* Удалите следующий код из AndroidManifest.xml вашего приложения:
+* Добавьте следующий код в `AndroidManifest.xml` вашего приложения:
 ```xml
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" tools:node="remove" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" tools:node="remove" />
 ```
 * Обновите приложение в Google Play. В процессе публикации убедитесь, что в Google Play Console нет предупреждений о наличии разрешения местоположения.
 
