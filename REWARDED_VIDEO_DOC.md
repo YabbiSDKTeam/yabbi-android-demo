@@ -4,7 +4,7 @@
 ## Загрузка рекламы
 Для загрузки рекламы используйте следующий код
 ```java
-YabbiAds.loadAd(activity, YbiAdType.REWARDED);
+YabbiAds.loadAd(activity, YabbiAds.REWARDED);
 ```
 
 ## Методы обратного вызова
@@ -46,24 +46,24 @@ YabbiAds.setRewardedListener(new YbiRewardedListener(){
 ## Проверка загрузки рекламы
 Вы можете проверить статус загрузки перед работы с рекламой.
 ```java
-YabbiAds.isAdLoaded(YbiAdType.REWARDED);
+YabbiAds.isAdLoaded(YabbiAds.REWARDED);
 ```
 
 Рекомендуем всегда проверять статус загрузки рекламы, прежде чем пытаться ее показать.
 ```java
-if(YabbiAds.isAdLoaded(YbiAdType.REWARDED)) {
-    YabbiAds.showAd(activity, YbiAdType.REWARDED);
+if(YabbiAds.isAdLoaded(YabbiAds.REWARDED)) {
+    YabbiAds.showAd(activity, YabbiAds.REWARDED);
 }
 ```
 
 ## Показ рекламы
 Для показа рекламы используйте метод:
 ```java
-YabbiAds.showAd(activity, YbiAdType.REWARDED);
+YabbiAds.showAd(activity, YabbiAds.REWARDED);
 ```
 
 ## Уничтожение рекламного контейнера
 Для уничтожения рекламы добавьте следующий код в вашем приложении.
 ```java
-YabbiAds.destroyAd(YbiAdType.REWARDED);
+YabbiAds.destroyAd(YabbiAds.REWARDED);
 ```

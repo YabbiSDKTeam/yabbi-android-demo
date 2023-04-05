@@ -2,7 +2,7 @@
 
 ## Руководство по Интеграции
 
-Версия релиза **2.3.5** | Дата релиза **15.03.2023**
+Версия релиза **2.3.6** | Дата релиза **5.04.2023**
 
 > Минимальные требования:
 >
@@ -29,6 +29,7 @@
    **Начиная с Arctic Fox и выше**
     ```gradle
     // Пример project-level settings.gradle
+    
     dependencyResolutionManagement {
         repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
         repositories {
@@ -43,6 +44,7 @@
    **Для версий до Arctic Fox**
     ```gradle
     // Пример project-level settings.gradle
+    
     allprojects {
         repositories {
             // ... other project repositories
@@ -56,7 +58,8 @@
 
 2. Вставьте следующий код в app-level build.gradle
    ```gradle
-    // Пример app-level build.gradle (excerpt)
+    // Пример app-level build.gradle
+   
     android {
         // ... другие опции
         
@@ -71,21 +74,28 @@
             targetCompatibility JavaVersion.VERSION_1_8
         }
     }
+   ```
+3. В этом же файле обновите раздел `dependencies`
+   * Для подключения плагина со всеми рекламными сетями вставьте следующий код.
+   ```gradle
+    // Пример app-level build.gradle
     
     dependencies {
         // ... другие зависимости проекта
 
-        // Используйте для подключения всех рекламных адаптеров
-        implementation 'me.yabbi.ads:sdk:+'
+        implementation 'me.yabbi.ads:sdk:2.3.6' // Это плагин YabbiAds SDK
+    }
+   ```
+   * Вы можете подключить рекламные сети выборочно. Для этого вставьте следующий код.
+   ```gradle
+    // Пример app-level build.gradle
+    
+    dependencies {
+        // ... другие зависимости проекта
 
-        // Добавьте если хотите подключить рекламные адаптеры выборочно
-        implementation 'me.yabbi.ads:core:+'
-
-        // Добавьте если вы испольузете адаптер для Яндекса
-        implementation 'me.yabbi.ads.networks:yandex:+'
-   
-        // Добавьте если вы испольузете адаптер для Mintegral
-        implementation 'me.yabbi.ads.networks:mintegral:+'
+        implementation 'me.yabbi.ads:core:1.3.6' // Это обязательная зависимость SDK
+        implementation 'me.yabbi.ads.networks:yandex:1.1.4' // Это рекламная сеть Yandex
+        implementation 'me.yabbi.ads.networks:mintegral:1.1.4' // Это рекламная сеть Mintegral
     }
    ```
 
@@ -103,24 +113,24 @@
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
-    <application 
-		...
-        android:networkSecurityConfig="@xml/network_security_config">
-    </application>
-</manifest>
+   <application
+   ...
+   android:networkSecurityConfig="@xml/network_security_config">
+</application>
+        </manifest>
 ```
 2. Добавьте конфиг, который передает **cleartextTrafficPermitted** true в **network_security_config.xml** файл:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <base-config cleartextTrafficPermitted="true">
-        <trust-anchors>
-            <certificates src="system" />
-        </trust-anchors>
-    </base-config>
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">127.0.0.1</domain>
-    </domain-config>
+   <base-config cleartextTrafficPermitted="true">
+      <trust-anchors>
+         <certificates src="system" />
+      </trust-anchors>
+   </base-config>
+   <domain-config cleartextTrafficPermitted="true">
+      <domain includeSubdomains="true">127.0.0.1</domain>
+   </domain-config>
 </network-security-config>
 ```
 
@@ -129,7 +139,6 @@
 ```java
 import me.yabbi.ads.YabbiAds;
 import me.yabbi.ads.YabbiConfiguration;
-import me.yabbi.ads.YbiAdType;
 import me.yabbi.ads.YbiInterstitialListener;
 import me.yabbi.ads.YbiRewardedListener;
 import me.yabbi.ads.common.YbiAdaptersParameters;
@@ -163,19 +172,19 @@ YabbiAds.setUserConsent(true);
 YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
 
 // Установите для показа рекламы с вознаграждением Яндекса
-YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
-    
+        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
+
 // Установите для показа рекламы от Mintegral
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
-    
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
+
 // Установите для показа полноэкранной рекламы Mintegral
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
 
 // Установите для показа рекламы с вознаграждением Mintegral
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
 ```
 > Используйте метод `setCustomParams` до вызова метода `initialize`.
 
@@ -183,12 +192,12 @@ YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "зам�
 Теперь `YabbiAds` готова к инициализации. Используйте код ниже, чтобы SDK заработал в вашем проекте.
 ```java
 final YabbiConfiguration config = new YabbiConfiguration(
-    "publisher_id", 
-    "interstitial_id", 
-    "rewarded_id"
-);
-    
-YabbiAds.initialize(this, config);
+        "publisher_id",
+        "interstitial_id",
+        "rewarded_id"
+        );
+
+        YabbiAds.initialize(config);
 ```
 
 * `publisher_id` - идентификатор издателя. Обязателен для заполнения.
@@ -207,37 +216,36 @@ YabbiAds.initialize(this, config);
 ```java
 import me.yabbi.ads.YabbiAds;
 import me.yabbi.ads.YabbiConfiguration;
-import me.yabbi.ads.YbiAdType;
 import me.yabbi.ads.YbiInterstitialListener;
 import me.yabbi.ads.YbiRewardedListener;
 import me.yabbi.ads.common.YbiAdaptersParameters;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    
-    YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
-    YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, "замените_на_свой_id");
+        super.onCreate(savedInstanceState);
 
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
-    
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
-    
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, "замените_на_свой_id");
 
-    final YabbiConfiguration config = new YabbiConfiguration(
-        "publisher_id", 
-        "interstitial_id", 
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
+
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
+
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
+
+final YabbiConfiguration config = new YabbiConfiguration(
+        "publisher_id",
+        "interstitial_id",
         "rewarded_id"
-    );
-    
-    YabbiAds.setUserConsent(true);
-    
-    YabbiAds.initialize(this, config);
-}
+        );
+
+        YabbiAds.setUserConsent(true);
+
+        YabbiAds.initialize(config);
+        }
 ```
 
 ## Режим отладки

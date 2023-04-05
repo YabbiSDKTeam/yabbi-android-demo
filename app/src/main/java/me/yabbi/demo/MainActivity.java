@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import me.yabbi.ads.YabbiAds;
 import me.yabbi.ads.YabbiConfiguration;
-import me.yabbi.ads.YbiAdType;
 import me.yabbi.ads.YbiInterstitialListener;
 import me.yabbi.ads.YbiRewardedListener;
 import me.yabbi.ads.common.YbiAdaptersParameters;
@@ -34,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setButtons() {
-        findViewById(R.id.load_interstitial_button).setOnClickListener(v -> YabbiAds.loadAd(this, YbiAdType.INTERSTITIAL));
-        findViewById(R.id.show_interstitial_button).setOnClickListener(v -> YabbiAds.showAd(this, YbiAdType.INTERSTITIAL));
-        findViewById(R.id.destroy_interstitial_button).setOnClickListener(v -> YabbiAds.destroyAd(YbiAdType.INTERSTITIAL));
+        findViewById(R.id.load_interstitial_button).setOnClickListener(v -> YabbiAds.loadAd(this, YabbiAds.INTERSTITIAL));
+        findViewById(R.id.show_interstitial_button).setOnClickListener(v -> YabbiAds.showAd(this, YabbiAds.INTERSTITIAL));
+        findViewById(R.id.destroy_interstitial_button).setOnClickListener(v -> YabbiAds.destroyAd(YabbiAds.INTERSTITIAL));
 
-        findViewById(R.id.load_rewarded_button).setOnClickListener(v -> YabbiAds.loadAd(this, YbiAdType.REWARDED));
-        findViewById(R.id.show_rewarded_button).setOnClickListener(v -> YabbiAds.showAd(this, YbiAdType.REWARDED));
-        findViewById(R.id.destroy_rewarded_button).setOnClickListener(v -> YabbiAds.destroyAd(YbiAdType.REWARDED));
+        findViewById(R.id.load_rewarded_button).setOnClickListener(v -> YabbiAds.loadAd(this, YabbiAds.REWARDED));
+        findViewById(R.id.show_rewarded_button).setOnClickListener(v -> YabbiAds.showAd(this, YabbiAds.REWARDED));
+        findViewById(R.id.destroy_rewarded_button).setOnClickListener(v -> YabbiAds.destroyAd(YabbiAds.REWARDED));
 
         findViewById(R.id.show_consent_button).setOnClickListener(v -> consentManager.showConsentWindow());
 
@@ -62,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         YabbiAds.setUserConsent(consentManager.hasConsent());
 
-        YabbiAds.initialize(this, config);
+        YabbiAds.enableDebug(true);
+        YabbiAds.initialize(config);
 
         logEvent("YabbiAds initialized");
 

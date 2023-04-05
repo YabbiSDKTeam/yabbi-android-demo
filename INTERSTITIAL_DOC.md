@@ -4,7 +4,7 @@
 ## Загрузка рекламы
 Для загрузки рекламы используйте следующий код
 ```java
-YabbiAds.loadAd(activity, YbiAdType.INTERSTITIAL);
+YabbiAds.loadAd(activity, YabbiAds.INTERSTITIAL);
 ```
 
 ## Методы обратного вызова
@@ -41,24 +41,24 @@ YabbiAds.setInterstitialListener(new YbiInterstitialListener(){
 ## Проверка загрузки рекламы
 Вы можете проверить статус загрузки перед работы с рекламой.
 ```java
-YabbiAds.isAdLoaded(YbiAdType.INTERSTITIAL);
+YabbiAds.isAdLoaded(YabbiAds.INTERSTITIAL);
 ```
 
 Рекомендуем всегда проверять статус загрузки рекламы, прежде чем пытаться ее показать.
 ```java
 if(YabbiAds.isAdLoaded(YabbiAds.INTERSTITIAL)) {
-    YabbiAds.showAd(activity, YbiAdType.INTERSTITIAL);
+    YabbiAds.showAd(activity, YabbiAds.INTERSTITIAL);
 }
 ```
 
 ## Показ рекламы
 Для показа рекламы используйте метод:
 ```java
-YabbiAds.showAd(activity, YbiAdType.INTERSTITIAL);
+YabbiAds.showAd(activity, YabbiAds.INTERSTITIAL);
 ```
 
 ## Уничтожение рекламного контейнера
 Для уничтожения рекламы добавьте следующий код в вашем приложении.
 ```java
-YabbiAds.destroyAd(YbiAdType.INTERSTITIAL);
+YabbiAds.destroyAd(YabbiAds.INTERSTITIAL);
 ```
