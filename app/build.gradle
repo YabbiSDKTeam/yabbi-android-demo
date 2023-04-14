@@ -63,7 +63,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation 'me.yabbi.ads:sdk:2.3.6'
+    implementation 'me.yabbi.ads:sdk:2.3.7'
     implementation 'me.yabbi.ads:consent:1.0.5'
 }
 
