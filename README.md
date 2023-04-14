@@ -93,7 +93,7 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:core:1.3.6' // Это обязательная зависимость SDK
+        implementation 'me.yabbi.ads:core:1.3.7' // Это обязательная зависимость SDK
         implementation 'me.yabbi.ads.networks:yandex:1.1.4' // Это рекламная сеть Yandex
         implementation 'me.yabbi.ads.networks:mintegral:1.1.4' // Это рекламная сеть Mintegral
     }
