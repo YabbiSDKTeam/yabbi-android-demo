@@ -2,7 +2,7 @@
 
 ## Руководство по Интеграции
 
-Версия релиза **2.3.7** | Дата релиза **14.04.2023**
+Версия релиза **2.4.1** | Дата релиза **17.04.2023**
 
 > Минимальные требования:
 >
@@ -21,9 +21,9 @@
 По этой причине убедитесь, что вы используете версию Gradle,
 которая соответствует одной из перечисленных [здесь](https://developer.android.com/studio/releases/gradle-plugin#4-0-0).
 
-Вы можете использовать радаптеры для медиации выборочно. Чем больше их подключено - тем больше филрейт.
+В зависимости от используемой версии Android Studio вставьте зависимость в файл Gradle.
 
-В зависимости от используемой версии Android Studio вставьте зависимость в файл Gradle:
+Если вы используете адаптеры для сторонних рекламных сетей,так же добавьте их зависимости.
 
 1. Вставьте следующий код в settings.gradle в корне проекта.  
    **Начиная с Arctic Fox и выше**
@@ -34,8 +34,14 @@
         repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
         repositories {
             // ... другие репозитории
+             maven {
+                url "https://mobileadx.ru/maven" // Это репозиторий YabbiAds
+            }
             maven {
-                url "https://mobileadx.ru/maven"
+                url 'https://android-sdk.is.com' // Это репозиторий IronSource
+            }
+            maven {
+                url  "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea"  // Это репозиторий для Mintegral
             }
         }
     }
@@ -49,10 +55,22 @@
         repositories {
             // ... other project repositories
             maven {
-                url "https://mobileadx.ru/maven"
+                url "https://mobileadx.ru/maven" // Это репозиторий YabbiAds
+            }
+            maven {
+                url 'https://android-sdk.is.com' // Это репозиторий IronSource
+            }
+            maven {
+                url  "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea"  // Это репозиторий для Mintegral
             }
         }
     }
+    ```
+
+
+
+    ```gradle
+  
     ```
 
 
@@ -83,7 +101,7 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:sdk:2.3.7' // Это плагин YabbiAds SDK
+        implementation 'me.yabbi.ads:sdk:2.4.1' // Это плагин YabbiAds SDK
     }
    ```
    * Вы можете подключить рекламные сети выборочно. Для этого вставьте следующий код.
@@ -93,9 +111,10 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:core:1.3.7' // Это обязательная зависимость SDK
+        implementation 'me.yabbi.ads:core:1.4.0' // Это обязательная зависимость SDK
         implementation 'me.yabbi.ads.networks:yandex:1.1.4' // Это рекламная сеть Yandex
-        implementation 'me.yabbi.ads.networks:mintegral:1.1.4' // Это рекламная сеть Mintegral
+        implementation 'me.yabbi.ads.networks:ironsource:1.0.0' // Это рекламная сеть IronSource
+        implementation 'me.yabbi.ads.networks:mintegral:1.1.5' // Это рекламная сеть Mintegral
     }
    ```
 
@@ -172,19 +191,28 @@ YabbiAds.setUserConsent(true);
 YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
 
 // Установите для показа рекламы с вознаграждением Яндекса
-        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
+YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
+
+// Установите для показа рекламы от IronSource
+YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceAppID, "замените_на_свой_id");
+
+// Установите для показа полноэкранной рекламы IronSource
+YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceInterstitialPlacementID, "замените_на_свой_id");
+
+// Установите для показа рекламы с вознаграждением IronSource
+YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceRewardedPlacementID, "замените_на_свой_id");
 
 // Установите для показа рекламы от Mintegral
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
+YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
+YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
 
 // Установите для показа полноэкранной рекламы Mintegral
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
+YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
+YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
 
 // Установите для показа рекламы с вознаграждением Mintegral
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
+YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
+YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
 ```
 > Используйте метод `setCustomParams` до вызова метода `initialize`.
 
@@ -192,12 +220,12 @@ YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замен
 Теперь `YabbiAds` готова к инициализации. Используйте код ниже, чтобы SDK заработал в вашем проекте.
 ```java
 final YabbiConfiguration config = new YabbiConfiguration(
-        "publisher_id",
-        "interstitial_id",
-        "rewarded_id"
-        );
+    "publisher_id",
+    "interstitial_id",
+    "rewarded_id"
+);
 
-        YabbiAds.initialize(config);
+YabbiAds.initialize(config);
 ```
 
 * `publisher_id` - идентификатор издателя. Обязателен для заполнения.
@@ -222,30 +250,30 @@ import me.yabbi.ads.common.YbiAdaptersParameters;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    super.onCreate(savedInstanceState);
 
-        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
-        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, "замените_на_свой_id");
 
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
 
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
 
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
 
-final YabbiConfiguration config = new YabbiConfiguration(
+    final YabbiConfiguration config = new YabbiConfiguration(
         "publisher_id",
         "interstitial_id",
         "rewarded_id"
-        );
-
-        YabbiAds.setUserConsent(true);
-
-        YabbiAds.initialize(config);
-        }
+    );
+    
+    YabbiAds.setUserConsent(true);
+    
+    YabbiAds.initialize(config);
+}
 ```
 
 ## Режим отладки
@@ -254,7 +282,7 @@ final YabbiConfiguration config = new YabbiConfiguration(
 Для включения режима отладки используйте метод `enableDebug`.
 
 ```java
-YabbiAds.enableDebug(true)
+YabbiAds.enableDebug(true);
 ```
 
 ## Типы рекламы

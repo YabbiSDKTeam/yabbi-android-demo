@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
         YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, BuildConfig.MINTEGRAL_INTERSTITIAL_ID);
         YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, BuildConfig.MINTEGRAL_REWARDED_PLACEMENT_ID);
         YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, BuildConfig.MINTEGRAL_REWARDED_ID);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceAppID, BuildConfig.IRON_SOURCE_APP_ID);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceInterstitialPlacementID, BuildConfig.IRON_SOURCE_INTERSTITIAL_ID);
+        YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceRewardedPlacementID, BuildConfig.IRON_SOURCE_REWARDED_ID);
 
         final YabbiConfiguration config = new YabbiConfiguration(BuildConfig.YABBI_PUBLISHER_ID, BuildConfig.YABBI_INTERSTITIAL_ID, BuildConfig.YABBI_REWARDED_ID);
 
