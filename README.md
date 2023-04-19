@@ -68,12 +68,6 @@
     ```
 
 
-
-    ```gradle
-  
-    ```
-
-
 2. Вставьте следующий код в app-level build.gradle
    ```gradle
     // Пример app-level build.gradle
@@ -132,24 +126,24 @@
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
-   <application
-   ...
-   android:networkSecurityConfig="@xml/network_security_config">
-</application>
-        </manifest>
+    <application
+    ...
+    android:networkSecurityConfig="@xml/network_security_config">
+    </application>
+</manifest>
 ```
 2. Добавьте конфиг, который передает **cleartextTrafficPermitted** true в **network_security_config.xml** файл:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-   <base-config cleartextTrafficPermitted="true">
-      <trust-anchors>
-         <certificates src="system" />
-      </trust-anchors>
-   </base-config>
-   <domain-config cleartextTrafficPermitted="true">
-      <domain includeSubdomains="true">127.0.0.1</domain>
-   </domain-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">127.0.0.1</domain>
+    </domain-config>
 </network-security-config>
 ```
 
@@ -254,6 +248,12 @@ protected void onCreate(Bundle savedInstanceState) {
 
     YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
     YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, "замените_на_свой_id");
+    
+    YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceAppID, "замените_на_свой_id");
+
+    YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceInterstitialPlacementID, "замените_на_свой_id");
+
+    YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceRewardedPlacementID, "замените_на_свой_id");
 
     YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
     YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
