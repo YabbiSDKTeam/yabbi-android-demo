@@ -2,7 +2,7 @@
 
 ## Руководство по Интеграции
 
-Версия релиза **2.4.1** | Дата релиза **17.04.2023**
+Версия релиза **2.6.0** | Дата релиза **27.06.2023**
 
 > Минимальные требования:
 >
@@ -95,7 +95,7 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:sdk:2.4.1' // Это плагин YabbiAds SDK
+        implementation 'me.yabbi.ads:sdk:2.6.0' // Это плагин YabbiAds SDK
     }
    ```
    * Вы можете подключить рекламные сети выборочно. Для этого вставьте следующий код.
@@ -105,10 +105,10 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:core:1.4.0' // Это обязательная зависимость SDK
-        implementation 'me.yabbi.ads.networks:yandex:1.1.4' // Это рекламная сеть Yandex
-        implementation 'me.yabbi.ads.networks:ironsource:1.0.0' // Это рекламная сеть IronSource
-        implementation 'me.yabbi.ads.networks:mintegral:1.1.5' // Это рекламная сеть Mintegral
+        implementation 'me.yabbi.ads:core:1.6.0' // Это обязательная зависимость SDK
+        implementation 'me.yabbi.ads.networks:yandex:1.2.0' // Это рекламная сеть Yandex
+        implementation 'me.yabbi.ads.networks:ironsource:1.1.0' // Это рекламная сеть IronSource
+        implementation 'me.yabbi.ads.networks:mintegral:1.2.0' // Это рекламная сеть Mintegral
     }
    ```
 
@@ -294,8 +294,8 @@ YabbiAds.enableDebug(true);
 
 Ознакомьтесь с детальной документацией по каждому типу рекламы
 
-1. [Полноэкранная реклама](INTERSTITIAL_DOC.MD)
-2. [Полноэкранная реклама с вознаграждением](REWARDED_VIDEO_DOC.MD)
+1. [Полноэкранная реклама](INTERSTITIAL_DOC.md)
+2. [Полноэкранная реклама с вознаграждением](REWARDED_VIDEO_DOC.md)
 
 ## Подготовьте ваше Android приложение к публикации
 
