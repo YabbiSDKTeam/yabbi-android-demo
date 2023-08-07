@@ -9,7 +9,7 @@ import me.yabbi.ads.YabbiAds;
 import me.yabbi.ads.YabbiConfiguration;
 import me.yabbi.ads.YbiInterstitialListener;
 import me.yabbi.ads.YbiRewardedListener;
-import me.yabbi.ads.common.YbiAdaptersParameters;
+import me.yabbi.ads.common.ExternalInfoStrings;
 import me.yabbi.ads.consent.YbiConsentBuilder;
 import me.yabbi.ads.consent.YbiConsentListener;
 import me.yabbi.ads.consent.YbiConsentManager;
@@ -47,18 +47,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeYabbi() {
-        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, BuildConfig.YANDEX_INTERSTITIAL_ID);
-        YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, BuildConfig.YANDEX_REWARDED_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.yandexInterstitialUnitID, BuildConfig.YANDEX_INTERSTITIAL_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.yandexRewardedUnitID, BuildConfig.YANDEX_REWARDED_ID);
 
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, BuildConfig.MINTEGRAL_APP_ID);
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, BuildConfig.MINTEGRAL_API_KEY);
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, BuildConfig.MINTEGRAL_INTERSTITIAL_PLACEMENT_ID);
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, BuildConfig.MINTEGRAL_INTERSTITIAL_ID);
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, BuildConfig.MINTEGRAL_REWARDED_PLACEMENT_ID);
-        YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, BuildConfig.MINTEGRAL_REWARDED_ID);
-        YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceAppID, BuildConfig.IRON_SOURCE_APP_ID);
-        YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceInterstitialPlacementID, BuildConfig.IRON_SOURCE_INTERSTITIAL_ID);
-        YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceRewardedPlacementID, BuildConfig.IRON_SOURCE_REWARDED_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralAppID, BuildConfig.MINTEGRAL_APP_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralApiKey, BuildConfig.MINTEGRAL_API_KEY);
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialPlacementId, BuildConfig.MINTEGRAL_INTERSTITIAL_PLACEMENT_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialUnitId, BuildConfig.MINTEGRAL_INTERSTITIAL_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedPlacementId, BuildConfig.MINTEGRAL_REWARDED_PLACEMENT_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedUnitId, BuildConfig.MINTEGRAL_REWARDED_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceAppID, BuildConfig.IRON_SOURCE_APP_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceInterstitialPlacementID, BuildConfig.IRON_SOURCE_INTERSTITIAL_ID);
+        YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceRewardedPlacementID, BuildConfig.IRON_SOURCE_REWARDED_ID);
 
         final YabbiConfiguration config = new YabbiConfiguration(BuildConfig.YABBI_PUBLISHER_ID, BuildConfig.YABBI_INTERSTITIAL_ID, BuildConfig.YABBI_REWARDED_ID);
 

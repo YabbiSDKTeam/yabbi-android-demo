@@ -2,7 +2,7 @@
 
 ## Руководство по Интеграции
 
-Версия релиза **2.6.0** | Дата релиза **27.06.2023**
+Версия релиза **2.7.0** | Дата релиза **07.08.2023**
 
 > Минимальные требования:
 >
@@ -95,7 +95,7 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:sdk:2.6.0' // Это плагин YabbiAds SDK
+        implementation 'me.yabbi.ads:sdk:2.7.0' // Это плагин YabbiAds SDK
     }
    ```
    * Вы можете подключить рекламные сети выборочно. Для этого вставьте следующий код.
@@ -105,10 +105,10 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:core:1.6.0' // Это обязательная зависимость SDK
+        implementation 'me.yabbi.ads:core:1.7.0' // Это обязательная зависимость SDK
         implementation 'me.yabbi.ads.networks:yandex:1.2.0' // Это рекламная сеть Yandex
-        implementation 'me.yabbi.ads.networks:ironsource:1.1.0' // Это рекламная сеть IronSource
-        implementation 'me.yabbi.ads.networks:mintegral:1.2.0' // Это рекламная сеть Mintegral
+        implementation 'me.yabbi.ads.networks:ironsource:1.1.3' // Это рекламная сеть IronSource
+        implementation 'me.yabbi.ads.networks:mintegral:1.2.1' // Это рекламная сеть Mintegral
     }
    ```
 
@@ -154,7 +154,6 @@ import me.yabbi.ads.YabbiAds;
 import me.yabbi.ads.YabbiConfiguration;
 import me.yabbi.ads.YbiInterstitialListener;
 import me.yabbi.ads.YbiRewardedListener;
-import me.yabbi.ads.common.YbiAdaptersParameters;
 ```
 
 ### Сбор данных пользователя
@@ -180,33 +179,38 @@ YabbiAds.setUserConsent(true);
 
 ### Работа сторонних рекламных сетей
 Для работы сторонних рекламных сетей необходимо добавить идентификаторы для каждой рекламной сети.
+
+Импортируйте `ExternalInfoStrings` в начале файла и установите идентификаторы выбранных вами сетей.
+
 ```java
+import me.yabbi.ads.common.ExternalInfoStrings;
+
 // Установите для показа полноэкранной рекламы Яндекса
-YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.yandexInterstitialUnitID, "замените_на_свой_id");
 
 // Установите для показа рекламы с вознаграждением Яндекса
-YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.yandexRewardedUnitID, "замените_на_свой_id");
 
 // Установите для показа рекламы от IronSource
-YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceAppID, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceAppID, "замените_на_свой_id");
 
 // Установите для показа полноэкранной рекламы IronSource
-YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceInterstitialPlacementID, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceInterstitialPlacementID, "замените_на_свой_id");
 
 // Установите для показа рекламы с вознаграждением IronSource
-YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceRewardedPlacementID, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceRewardedPlacementID, "замените_на_свой_id");
 
 // Установите для показа рекламы от Mintegral
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.mintegralAppID, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.mintegralApiKey, "замените_на_свой_id");
 
 // Установите для показа полноэкранной рекламы Mintegral
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialPlacementId, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialUnitId, "замените_на_свой_id");
 
 // Установите для показа рекламы с вознаграждением Mintegral
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
-YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedPlacementId, "замените_на_свой_id");
+YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedUnitId, "замените_на_свой_id");
 ```
 > Используйте метод `setCustomParams` до вызова метода `initialize`.
 
@@ -240,40 +244,40 @@ import me.yabbi.ads.YabbiAds;
 import me.yabbi.ads.YabbiConfiguration;
 import me.yabbi.ads.YbiInterstitialListener;
 import me.yabbi.ads.YbiRewardedListener;
-import me.yabbi.ads.common.YbiAdaptersParameters;
+import me.yabbi.ads.common.ExternalInfoStrings;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
-    YabbiAds.setCustomParams(YbiAdaptersParameters.yandexInterstitialID, "замените_на_свой_id");
-    YabbiAds.setCustomParams(YbiAdaptersParameters.yandexRewardedID, "замените_на_свой_id");
-    
-    YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceAppID, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.yandexInterstitialUnitID, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.yandexRewardedUnitID, "замените_на_свой_id");
 
-    YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceInterstitialPlacementID, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceAppID, "замените_на_свой_id");
 
-    YabbiAds.setCustomParams(YbiAdaptersParameters.ironSourceRewardedPlacementID, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceInterstitialPlacementID, "замените_на_свой_id");
 
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralAppID, "замените_на_свой_id");
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralApiKey, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceRewardedPlacementID, "замените_на_свой_id");
 
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialPlacementId, "замените_на_свой_id");
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralInterstitialUnitId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralAppID, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralApiKey, "замените_на_свой_id");
 
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedPlacementId, "замените_на_свой_id");
-    YabbiAds.setCustomParams(YbiAdaptersParameters.mintegralRewardedUnitId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialPlacementId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialUnitId, "замените_на_свой_id");
 
-    final YabbiConfiguration config = new YabbiConfiguration(
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedPlacementId, "замените_на_свой_id");
+        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedUnitId, "замените_на_свой_id");
+
+final YabbiConfiguration config = new YabbiConfiguration(
         "publisher_id",
         "interstitial_id",
         "rewarded_id"
-    );
-    
-    YabbiAds.setUserConsent(true);
-    
-    YabbiAds.initialize(config);
-}
+        );
+
+        YabbiAds.setUserConsent(true);
+
+        YabbiAds.initialize(config);
+        }
 ```
 
 ## Режим отладки
