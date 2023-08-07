@@ -10,6 +10,15 @@ YABBI_PUBLISHER_ID=вставьте_свой_id
 YABBI_INTERSTITIAL_ID=вставьте_свой_id
 YABBI_REWARDED_ID=вставьте_свой_id
 
+# Для инициализации IronSource
+IRON_SOURCE_APP_ID=вставьте_свой_id
+
+# Для показа полноэкранной рекламы IronSource
+IRON_SOURCE_INTERSTITIAL_ID=вставьте_свой_id
+
+# Для показа рекламы с вознаграждением IronSource
+IRON_SOURCE_REWARDED_ID=вставьте_свой_id
+
 # Для показа полноэкранной рекламы Яндекса
 YANDEX_INTERSTITIAL_ID=вставьте_свой_id
 
