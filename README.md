@@ -248,36 +248,36 @@ import me.yabbi.ads.common.ExternalInfoStrings;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    super.onCreate(savedInstanceState);
 
-        YabbiAds.setCustomParams(ExternalInfoStrings.yandexInterstitialUnitID, "замените_на_свой_id");
-        YabbiAds.setCustomParams(ExternalInfoStrings.yandexRewardedUnitID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.yandexInterstitialUnitID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.yandexRewardedUnitID, "замените_на_свой_id");
 
-        YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceAppID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceAppID, "замените_на_свой_id");
 
-        YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceInterstitialPlacementID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceInterstitialPlacementID, "замените_на_свой_id");
 
-        YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceRewardedPlacementID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.ironSourceRewardedPlacementID, "замените_на_свой_id");
 
-        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralAppID, "замените_на_свой_id");
-        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralApiKey, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.mintegralAppID, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.mintegralApiKey, "замените_на_свой_id");
 
-        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialPlacementId, "замените_на_свой_id");
-        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialUnitId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialPlacementId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.mintegralInterstitialUnitId, "замените_на_свой_id");
 
-        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedPlacementId, "замените_на_свой_id");
-        YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedUnitId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedPlacementId, "замените_на_свой_id");
+    YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedUnitId, "замените_на_свой_id");
 
-final YabbiConfiguration config = new YabbiConfiguration(
+    final YabbiConfiguration config = new YabbiConfiguration(
         "publisher_id",
         "interstitial_id",
         "rewarded_id"
-        );
+    );
 
-        YabbiAds.setUserConsent(true);
+    YabbiAds.setUserConsent(true);
 
-        YabbiAds.initialize(config);
-        }
+    YabbiAds.initialize(config);
+}
 ```
 
 ## Режим отладки
