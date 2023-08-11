@@ -2,7 +2,7 @@
 
 ## Руководство по Интеграции
 
-Версия релиза **2.7.0** | Дата релиза **07.08.2023**
+Версия релиза **2.7.2** | Дата релиза **11.08.2023**
 
 > Минимальные требования:
 >
@@ -95,7 +95,7 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:sdk:2.7.0' // Это плагин YabbiAds SDK
+        implementation 'me.yabbi.ads:sdk:2.7.2' // Это плагин YabbiAds SDK
     }
    ```
    * Вы можете подключить рекламные сети выборочно. Для этого вставьте следующий код.
@@ -105,7 +105,7 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:core:1.7.0' // Это обязательная зависимость SDK
+        implementation 'me.yabbi.ads:core:1.7.2' // Это обязательная зависимость SDK
         implementation 'me.yabbi.ads.networks:yandex:1.2.0' // Это рекламная сеть Yandex
         implementation 'me.yabbi.ads.networks:ironsource:1.1.3' // Это рекламная сеть IronSource
         implementation 'me.yabbi.ads.networks:mintegral:1.2.1' // Это рекламная сеть Mintegral
