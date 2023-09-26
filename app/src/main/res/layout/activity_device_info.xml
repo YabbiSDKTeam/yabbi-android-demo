@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@color/background">
+    tools:context=".DeviceInfoActivity"
+    android:background="@android:color/white">
 
     <ScrollView
-        android:id="@+id/scrollView"
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +17,7 @@
 
         <include
             android:id="@+id/include"
-            layout="@layout/main_layout" />
+            layout="@layout/device_info_layout" />
 
     </ScrollView>
 

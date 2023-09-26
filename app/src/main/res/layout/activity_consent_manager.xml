@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@color/background">
+    tools:context=".ConsentManagerActivity">
 
     <ScrollView
-        android:id="@+id/scrollView"
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +16,7 @@
 
         <include
             android:id="@+id/include"
-            layout="@layout/main_layout" />
+            layout="@layout/consent_manager_layout" />
 
     </ScrollView>
 

@@ -1,26 +1,9 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.secrets_gradle_plugin' version '0.4'
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-def YABBI_PUBLISHER_ID = properties.getProperty('YABBI_PUBLISHER_ID') ?: ""
-def YABBI_INTERSTITIAL_ID = properties.getProperty('YABBI_INTERSTITIAL_ID') ?: ""
-def YABBI_REWARDED_ID = properties.getProperty('YABBI_REWARDED_ID') ?: ""
-def YANDEX_INTERSTITIAL_ID = properties.getProperty('YANDEX_INTERSTITIAL_ID') ?: ""
-def YANDEX_REWARDED_ID = properties.getProperty('YANDEX_REWARDED_ID') ?: ""
-def MINTEGRAL_APP_ID = properties.getProperty('MINTEGRAL_APP_ID') ?: ""
-def MINTEGRAL_API_KEY = properties.getProperty('MINTEGRAL_API_KEY') ?: ""
-def MINTEGRAL_INTERSTITIAL_PLACEMENT_ID = properties.getProperty('MINTEGRAL_INTERSTITIAL_PLACEMENT_ID') ?: ""
-def MINTEGRAL_INTERSTITIAL_ID = properties.getProperty('MINTEGRAL_INTERSTITIAL_ID') ?: ""
-def MINTEGRAL_REWARDED_PLACEMENT_ID = properties.getProperty('MINTEGRAL_REWARDED_PLACEMENT_ID') ?: ""
-def MINTEGRAL_REWARDED_ID = properties.getProperty('MINTEGRAL_REWARDED_ID') ?: ""
-def IRON_SOURCE_APP_ID = properties.getProperty('IRON_SOURCE_APP_ID') ?: ""
-def IRON_SOURCE_INTERSTITIAL_ID = properties.getProperty('IRON_SOURCE_INTERSTITIAL_ID') ?: ""
-def IRON_SOURCE_REWARDED_ID = properties.getProperty('IRON_SOURCE_REWARDED_ID') ?: ""
-
 android {
+    namespace 'me.yabbi.ads.app'
     compileSdk 33
 
     defaultConfig {
@@ -29,23 +12,9 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0.0"
-        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "YABBI_PUBLISHER_ID", "\"${YABBI_PUBLISHER_ID}\""
-        buildConfigField "String", "YABBI_INTERSTITIAL_ID", "\"${YABBI_INTERSTITIAL_ID}\""
-        buildConfigField "String", "YABBI_REWARDED_ID", "\"${YABBI_REWARDED_ID}\""
-        buildConfigField "String", "YANDEX_INTERSTITIAL_ID", "\"${YANDEX_INTERSTITIAL_ID}\""
-        buildConfigField "String", "YANDEX_REWARDED_ID", "\"${YANDEX_REWARDED_ID}\""
-        buildConfigField "String", "MINTEGRAL_APP_ID", "\"${MINTEGRAL_APP_ID}\""
-        buildConfigField "String", "MINTEGRAL_API_KEY", "\"${MINTEGRAL_API_KEY}\""
-        buildConfigField "String", "MINTEGRAL_INTERSTITIAL_PLACEMENT_ID", "\"${MINTEGRAL_INTERSTITIAL_PLACEMENT_ID}\""
-        buildConfigField "String", "MINTEGRAL_INTERSTITIAL_ID", "\"${MINTEGRAL_INTERSTITIAL_ID}\""
-        buildConfigField "String", "MINTEGRAL_REWARDED_PLACEMENT_ID", "\"${MINTEGRAL_REWARDED_PLACEMENT_ID}\""
-        buildConfigField "String", "MINTEGRAL_REWARDED_ID", "\"${MINTEGRAL_REWARDED_ID}\""
-        buildConfigField "String", "IRON_SOURCE_APP_ID", "\"${IRON_SOURCE_APP_ID}\""
-        buildConfigField "String", "IRON_SOURCE_INTERSTITIAL_ID", "\"${IRON_SOURCE_INTERSTITIAL_ID}\""
-        buildConfigField "String", "IRON_SOURCE_REWARDED_ID", "\"${IRON_SOURCE_REWARDED_ID}\""
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -58,19 +27,22 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
     testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
-    implementation 'me.yabbi.ads:sdk:2.7.1'
+    implementation 'me.yabbi.ads:sdk:3.0.0'
 
     implementation 'me.yabbi.ads:consent:1.0.5'
 }
-

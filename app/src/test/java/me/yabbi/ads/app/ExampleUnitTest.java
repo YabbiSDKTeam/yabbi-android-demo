@@ -1,4 +1,4 @@
-package me.yabbi.demo;
+package me.yabbi.ads.app;
 
 import org.junit.Test;
 
