@@ -1,11 +1,12 @@
 # Полноэкранный баннер
-Баннер на весь экран, который можно закрыть через несколько секунд.
+Баннер показывается пользователю на весь экран, с возможностью закрыть баннер и перейти по рекламной ссылке.
 
 ## Загрузка рекламы
 Для загрузки рекламы используйте следующий код
 ```java
-YabbiAds.loadAd(activity, YabbiAds.INTERSTITIAL);
+YabbiAds.loadAd(this, YabbiAds.INTERSTITIAL, "placement_name");
 ```
+Замените `placement_name` на идентификатор рекламного блока из [личного кабинета](https://mobileadx.ru).
 
 ## Методы обратного вызова
 Для обработки событий жизненного цикла необходимо предоставить класс для работы.
@@ -17,8 +18,9 @@ YabbiAds.setInterstitialListener(new YbiInterstitialListener(){
     }
     
     @Override
-    public void onInterstitialLoadFail(String message){
+    public void onInterstitialLoadFail(AdException error){
         // Вызывется если при загрузке рекламы произошла ошибка
+        // С помощью AdException error можно получить подробную информацию об ошибке
     }
     
     @Override
@@ -27,8 +29,9 @@ YabbiAds.setInterstitialListener(new YbiInterstitialListener(){
     }
     
     @Override
-    public void onInterstitialShowFailed(String message){
+    public void onInterstitialShowFailed(AdException error){
        // Вызывется если при показе рекламы произошла ошибка
+       // С помощью AdException error можно получить подробную информацию об ошибке
     }
     
     @Override
@@ -41,24 +44,27 @@ YabbiAds.setInterstitialListener(new YbiInterstitialListener(){
 ## Проверка загрузки рекламы
 Вы можете проверить статус загрузки перед работы с рекламой.
 ```java
-YabbiAds.isAdLoaded(YabbiAds.INTERSTITIAL);
+YabbiAds.isAdLoaded(YabbiAds.INTERSTITIAL, "placement_name");
 ```
+Замените `placement_name` на идентификатор рекламного блока из [личного кабинета](https://mobileadx.ru).
 
 Рекомендуем всегда проверять статус загрузки рекламы, прежде чем пытаться ее показать.
 ```java
-if(YabbiAds.isAdLoaded(YabbiAds.INTERSTITIAL)) {
-    YabbiAds.showAd(activity, YabbiAds.INTERSTITIAL);
+if(YabbiAds.isAdLoaded(YabbiAds.INTERSTITIAL, "placement_name")) {
+    YabbiAds.showAd(activity, YabbiAds.INTERSTITIAL, "placement_name");
 }
 ```
 
 ## Показ рекламы
 Для показа рекламы используйте метод:
 ```java
-YabbiAds.showAd(activity, YabbiAds.INTERSTITIAL);
+YabbiAds.showAd(activity, YabbiAds.INTERSTITIAL, "placement_name");
 ```
+Замените `placement_name` на идентификатор рекламного блока из [личного кабинета](https://mobileadx.ru).
 
 ## Уничтожение рекламного контейнера
 Для уничтожения рекламы добавьте следующий код в вашем приложении.
 ```java
-YabbiAds.destroyAd(YabbiAds.INTERSTITIAL);
+YabbiAds.destroyAd(YabbiAds.INTERSTITIAL, "placement_name");
 ```
+Замените `placement_name` на идентификатор рекламного блока из [личного кабинета](https://mobileadx.ru).

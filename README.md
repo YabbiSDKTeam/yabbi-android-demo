@@ -2,7 +2,7 @@
 
 ## Руководство по Интеграции
 
-Версия релиза **2.7.1** | Дата релиза **11.08.2023**
+Версия релиза **3.0.0** | Дата релиза **26.09.2023**
 
 > Минимальные требования:
 >
@@ -95,7 +95,7 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:sdk:2.7.1' // Это плагин YabbiAds SDK
+        implementation 'me.yabbi.ads:sdk:3.0.0' // Это плагин YabbiAds SDK
     }
    ```
    * Вы можете подключить рекламные сети выборочно. Для этого вставьте следующий код.
@@ -105,10 +105,10 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads:core:1.7.1' // Это обязательная зависимость SDK
-        implementation 'me.yabbi.ads.networks:yandex:1.2.0' // Это рекламная сеть Yandex
-        implementation 'me.yabbi.ads.networks:ironsource:1.1.3' // Это рекламная сеть IronSource
-        implementation 'me.yabbi.ads.networks:mintegral:1.2.1' // Это рекламная сеть Mintegral
+        implementation 'me.yabbi.ads:core:3.0.0' // Это обязательная зависимость SDK
+        implementation 'me.yabbi.ads.networks:yandex:1.3.0' // Это рекламная сеть Yandex
+        implementation 'me.yabbi.ads.networks:ironsource:1.2.0' // Это рекламная сеть IronSource
+        implementation 'me.yabbi.ads.networks:mintegral:1.3.0' // Это рекламная сеть Mintegral
     }
    ```
 
@@ -151,9 +151,6 @@
 Импортируйте `YabbiAds`.
 ```java
 import me.yabbi.ads.YabbiAds;
-import me.yabbi.ads.YabbiConfiguration;
-import me.yabbi.ads.YbiInterstitialListener;
-import me.yabbi.ads.YbiRewardedListener;
 ```
 
 ### Сбор данных пользователя
@@ -215,25 +212,13 @@ YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedUnitId, "заме�
 > Используйте метод `setCustomParams` до вызова метода `initialize`.
 
 ### Инициализация
-Теперь `YabbiAds` готова к инициализации. Используйте код ниже, чтобы SDK заработал в вашем проекте.
+Теперь `YabbiAds` готова к инициализации.
+
+Используйте код ниже, чтобы SDK заработал в вашем проекте.
 ```java
-final YabbiConfiguration config = new YabbiConfiguration(
-    "publisher_id",
-    "interstitial_id",
-    "rewarded_id"
-);
-
-YabbiAds.initialize(config);
+YabbiAds.initialize("publisher_id");
 ```
-
-* `publisher_id` - идентификатор издателя. Обязателен для заполнения.
-* `interstitial_id` - идентификатор полноэкранной рекламы. Может оставаться пустой строкой.
-* `rewarded_id` - идентификатор полноэкранной рекламы с вознаграждением. Может оставаться пустой строкой.
-
-
-1. Замените `publisher_id` на идентификатор издателя из [личного кабинета](https://mobileadx.ru/settings).
-2. Замените `interstitial_id` на ключ соответствующий баннерной рекламе из [личного кабинета](https://mobileadx.ru).
-3. Замените `rewarded_id` на ключ соответствующий видео с вознаграждением из [личного кабинета](https://mobileadx.ru).
+Замените `publisher_id` на идентификатор издателя из [личного кабинета](https://mobileadx.ru/settings).
 
 Ниже представлен полный код.
 
@@ -241,9 +226,6 @@ YabbiAds.initialize(config);
 
 ```java
 import me.yabbi.ads.YabbiAds;
-import me.yabbi.ads.YabbiConfiguration;
-import me.yabbi.ads.YbiInterstitialListener;
-import me.yabbi.ads.YbiRewardedListener;
 import me.yabbi.ads.common.ExternalInfoStrings;
 
 @Override
@@ -268,15 +250,8 @@ protected void onCreate(Bundle savedInstanceState) {
     YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedPlacementId, "замените_на_свой_id");
     YabbiAds.setCustomParams(ExternalInfoStrings.mintegralRewardedUnitId, "замените_на_свой_id");
 
-    final YabbiConfiguration config = new YabbiConfiguration(
-        "publisher_id",
-        "interstitial_id",
-        "rewarded_id"
-    );
-
     YabbiAds.setUserConsent(true);
-
-    YabbiAds.initialize(config);
+    YabbiAds.initialize("publisher_id");
 }
 ```
 
