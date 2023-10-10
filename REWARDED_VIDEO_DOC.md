@@ -71,8 +71,12 @@ YabbiAds.showAd(activity, YabbiAds.REWARDED, "placement_name");
 Замените `placement_name` на идентификатор рекламного блока из [личного кабинета](https://mobileadx.ru).
 
 ## Уничтожение рекламного контейнера
-Для уничтожения рекламы добавьте следующий код в вашем приложении.
-```java
-YabbiAds.destroyAd(YabbiAds.REWARDED, "placement_name");
-```
+* Для уничтожения рекламы с выбранным `placement_name` добавьте следующий код в вашем приложении.
+    ```java
+    YabbiAds.destroyAd(YabbiAds.REWARDED, "placement_name");
+    ```
+* Для уничтожения всех рекламных контейнеров добавьте следующий код в вашем приложении.
+    ```java
+    YabbiAds.destroyAd(YabbiAds.REWARDED);
+    ```
 Замените `placement_name` на идентификатор рекламного блока из [личного кабинета](https://mobileadx.ru).
