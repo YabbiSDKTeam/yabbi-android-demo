@@ -1,4 +1,4 @@
-# Адаптер Yabbi для AppLovin
+# Адаптер YabbiAds для AppLovin
 
 ## Руководство по Интеграции
 
@@ -71,7 +71,7 @@
     dependencies {
         // ... другие зависимости проекта
 
-        implementation 'me.yabbi.ads.adapters:applovin:1.1.0'
+        implementation 'me.yabbi.ads.adapters:applovin:1.1.0' // Это рекламная сеть ябби
 
     }
    ```
