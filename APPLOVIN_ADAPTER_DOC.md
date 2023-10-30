@@ -90,24 +90,24 @@
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
-    <application 
-		...
-        android:networkSecurityConfig="@xml/network_security_config">
-    </application>
-</manifest>
+   <application
+   ...
+   android:networkSecurityConfig="@xml/network_security_config">
+</application>
+        </manifest>
 ```
 2. Добавьте конфиг, который передает **cleartextTrafficPermitted** true в **network_security_config.xml** файл:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <base-config cleartextTrafficPermitted="true">
-        <trust-anchors>
-            <certificates src="system" />
-        </trust-anchors>
-    </base-config>
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">127.0.0.1</domain>
-    </domain-config>
+   <base-config cleartextTrafficPermitted="true">
+      <trust-anchors>
+         <certificates src="system" />
+      </trust-anchors>
+   </base-config>
+   <domain-config cleartextTrafficPermitted="true">
+      <domain includeSubdomains="true">127.0.0.1</domain>
+   </domain-config>
 </network-security-config>
 ```
 
@@ -115,6 +115,13 @@
 Инициализируйте **AppLovin**, следуя официальной [документации AppLovin](https://dash.applovin.com/documentation/mediation/android/getting-started/integration).
 
 Для добавления рекламной сети **YabbiAds** следуйте инструкции по добавлению кастомной рекламной сети - [клик](https://dash.applovin.com/documentation/mediation/android/mediation-setup/custom-sdk).
+
+Заполните поля следующими параметрами
+* **Network Type** - `SDK`
+* **Custom Network Name** - `YabbiAds`
+* **Android Adapter Class Name** - `me.yabbi.ads.adapters.applovin`
+* **iOS Adapter Class Name** - `AppLovinMediationYabbiAdsCustomAdapter`
+
 
 ## Типы рекламы
 
