@@ -123,6 +123,8 @@
 * **iOS Adapter Class Name** - `AppLovinMediationYabbiAdsCustomAdapter`
 
 
+В поле **App ID** указывайте ваш **Publisher ID** из кабинета Yabbi.
+
 ## Типы рекламы
 
 Вы можете подключить 2 типа рекламы в свое приложение.
