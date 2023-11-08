@@ -128,8 +128,6 @@
 ## Тестовая реклама
 Для демонстрации работы SDK используйте тестовые идентификаторы.
 
-(Работают только для Android)
-
 * **Publisher ID** - `65057899-a16a-4877-989b-38c432a7fa15`
 * **Yabbi Interstitial ID** - `b8359c60-9bde-47c9-85ff-3c7afd2bd982`
 * **Yabbi Rewarded ID** - `eaac7a7f-b0b0-46d2-ac95-bd58578e9e29`
