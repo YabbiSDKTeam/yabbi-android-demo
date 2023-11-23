@@ -2,21 +2,19 @@ package me.yabbi.ads.app;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-
 import java.util.Objects;
+import sspnet.tech.core.RewardedListener;
+import sspnet.tech.unfiled.AdException;
+import sspnet.tech.yabbi.Yabbi;
 
-import me.yabbi.ads.YabbiAds;
-import me.yabbi.ads.YbiRewardedListener;
-import me.yabbi.ads.common.AdException;
-
-public class RewardedActivity extends AdvertActivity implements YbiRewardedListener {
+public class RewardedActivity extends AdvertActivity implements RewardedListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advert);
         setPlacementName(EnvironmentVariables.yabbiRewardedUnitID);
         setMediation();
-        YabbiAds.setRewardedListener(this);
+        Yabbi.setRewardedListener(this);
     }
 
     @Override
@@ -70,9 +68,9 @@ public class RewardedActivity extends AdvertActivity implements YbiRewardedListe
 
     @Override
     public void loadAd() {
-        if (YabbiAds.canLoadAd(YabbiAds.REWARDED, getPlacementName())) {
+        if (Yabbi.canLoadAd(Yabbi.REWARDED, getPlacementName())) {
             addLog("Ad start to load.");
-            YabbiAds.loadAd(this, YabbiAds.REWARDED, getPlacementName());
+            Yabbi.loadAd(this, Yabbi.REWARDED, getPlacementName());
         } else {
             addLog("SDK can't start load ad.");
         }
@@ -80,8 +78,8 @@ public class RewardedActivity extends AdvertActivity implements YbiRewardedListe
 
     @Override
     public void showAd() {
-        if (YabbiAds.isAdLoaded(YabbiAds.REWARDED, getPlacementName())) {
-            YabbiAds.showAd(this, YabbiAds.REWARDED, getPlacementName());
+        if (Yabbi.isAdLoaded(Yabbi.REWARDED, getPlacementName())) {
+            Yabbi.showAd(this, Yabbi.REWARDED, getPlacementName());
         } else {
             addLog("Ad is not loaded yet");
         }
@@ -89,7 +87,7 @@ public class RewardedActivity extends AdvertActivity implements YbiRewardedListe
 
     @Override
     public void destroyAd() {
-        YabbiAds.destroyAd(YabbiAds.REWARDED, getPlacementName());
+        Yabbi.destroyAd(Yabbi.REWARDED, getPlacementName());
         addLog("Ad was destroyed.");
     }
 }

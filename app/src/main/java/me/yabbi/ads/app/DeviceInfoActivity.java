@@ -1,27 +1,18 @@
 package me.yabbi.ads.app;
-
-import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.webkit.WebView;
 import android.widget.ListView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
-
 import java.io.IOException;
 import java.net.NetworkInterface;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import me.yabbi.ads.YabbiAds;
+import sspnet.tech.yabbi.Yabbi;
 
 public class DeviceInfoActivity extends AppCompatActivity {
 
@@ -38,7 +29,7 @@ public class DeviceInfoActivity extends AppCompatActivity {
 
         final ListView lv = findViewById(R.id.listView4);
 
-        final String sdkVersion = "" + YabbiAds.getSdkVersion();
+        final String sdkVersion = "" + Yabbi.getSdkVersion();
         final String androidOSVersion = "" + Build.VERSION.RELEASE;
         final String androidApiVersion = "" + Build.VERSION.SDK_INT;
         final String deviceModel = getDeviceName();

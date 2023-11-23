@@ -2,8 +2,8 @@ package me.yabbi.ads.app;
 
 import android.widget.Button;
 import android.widget.PopupMenu;
+import sspnet.tech.yabbi.Yabbi;
 
-import me.yabbi.ads.YabbiAds;
 
 public abstract class AdvertActivity extends EventsActivity {
 
@@ -55,6 +55,6 @@ public abstract class AdvertActivity extends EventsActivity {
 
     @Override
     void clearLog() {
-        setText("* YabbiAds " + YabbiAds.getSdkVersion() + " initialized.");
+        setText("* YabbiAds " + Yabbi.getSdkVersion() + " initialized.");
     }
 }

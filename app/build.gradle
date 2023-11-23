@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "me.yabbi.ads.app"
-        minSdk 19
+        minSdk 22
         targetSdk 33
         versionCode 1
         versionName "1.0.0"
@@ -42,7 +42,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
-    implementation 'me.yabbi.ads:sdk:3.0.1'
-
-    implementation 'me.yabbi.ads:consent:1.0.5'
+    implementation 'sspnet.tech:yabbi:1.0.0'
+    implementation 'sspnet.tech.consent:yabbi:1.0.0'
+    implementation 'sspnet.tech.adapters:yandex:1.0.0'
+    implementation 'sspnet.tech.adapters:ironsource:1.0.0'
+    implementation 'sspnet.tech.adapters:mintegral:1.0.0'
 }

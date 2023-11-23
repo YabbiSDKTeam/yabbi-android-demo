@@ -2,14 +2,11 @@ package me.yabbi.ads.app;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-
 import java.util.Objects;
-
-import me.yabbi.ads.YabbiAds;
-import me.yabbi.ads.YbiInterstitialListener;
-import me.yabbi.ads.common.AdException;
-
-public class InterstitialActivity extends AdvertActivity implements YbiInterstitialListener {
+import sspnet.tech.core.InterstitialListener;
+import sspnet.tech.unfiled.AdException;
+import sspnet.tech.yabbi.Yabbi;
+public class InterstitialActivity extends AdvertActivity implements InterstitialListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +14,7 @@ public class InterstitialActivity extends AdvertActivity implements YbiInterstit
         setContentView(R.layout.activity_advert);
         setPlacementName(EnvironmentVariables.yabbiInterstitialUnitID);
         setMediation();
-        YabbiAds.setInterstitialListener(this);
+        Yabbi.setInterstitialListener(this);
     }
 
     @Override
@@ -66,9 +63,9 @@ public class InterstitialActivity extends AdvertActivity implements YbiInterstit
 
     @Override
     public void loadAd() {
-        if (YabbiAds.canLoadAd(YabbiAds.INTERSTITIAL, getPlacementName())) {
+        if (Yabbi.canLoadAd(Yabbi.INTERSTITIAL, getPlacementName())) {
             addLog("Ad start to load.");
-            YabbiAds.loadAd(this, YabbiAds.INTERSTITIAL, getPlacementName());
+            Yabbi.loadAd(this, Yabbi.INTERSTITIAL, getPlacementName());
         } else {
             addLog("SDK can't start load ad.");
         }
@@ -76,8 +73,8 @@ public class InterstitialActivity extends AdvertActivity implements YbiInterstit
 
     @Override
     public void showAd() {
-        if (YabbiAds.isAdLoaded(YabbiAds.INTERSTITIAL, getPlacementName())) {
-            YabbiAds.showAd(this, YabbiAds.INTERSTITIAL, getPlacementName());
+        if (Yabbi.isAdLoaded(Yabbi.INTERSTITIAL, getPlacementName())) {
+            Yabbi.showAd(this, Yabbi.INTERSTITIAL, getPlacementName());
         } else {
             addLog("Ad is not loaded yet");
         }
@@ -85,7 +82,7 @@ public class InterstitialActivity extends AdvertActivity implements YbiInterstit
 
     @Override
     public void destroyAd() {
-        YabbiAds.destroyAd(YabbiAds.INTERSTITIAL, getPlacementName());
+        Yabbi.destroyAd(Yabbi.INTERSTITIAL, getPlacementName());
         addLog("Ad was destroyed.");
     }
 }

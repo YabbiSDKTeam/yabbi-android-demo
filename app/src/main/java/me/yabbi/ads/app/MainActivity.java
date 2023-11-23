@@ -8,10 +8,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
-import me.yabbi.ads.YabbiAds;
+import sspnet.tech.yabbi.Yabbi;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         final TextView sdkVersion = findViewById(R.id.textView12);
-        sdkVersion.setText(String.format("v%s", YabbiAds.getSdkVersion()));
+        sdkVersion.setText(String.format("v%s", Yabbi.getSdkVersion()));
 
         final ListView advertLV = findViewById(R.id.listView1);
         final ListView consentLV = findViewById(R.id.listView2);
@@ -85,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        YabbiAds.enableDebug(true);
-        YabbiAds.initialize(EnvironmentVariables.publisherID);
+        Yabbi.enableDebug(true);
+        Yabbi.initialize(EnvironmentVariables.publisherID);
     }
 }

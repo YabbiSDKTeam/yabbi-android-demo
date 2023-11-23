@@ -1,19 +1,18 @@
 package me.yabbi.ads.app;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import sspnet.tech.consent.core.ConsentBuilder;
+import sspnet.tech.consent.core.ConsentListener;
+import sspnet.tech.consent.yabbi.ConsentManager;
+import sspnet.tech.yabbi.Yabbi;
 
-import me.yabbi.ads.YabbiAds;
-import me.yabbi.ads.consent.YbiConsentBuilder;
-import me.yabbi.ads.consent.YbiConsentListener;
-import me.yabbi.ads.consent.YbiConsentManager;
 
-public class ConsentManagerActivity extends EventsActivity implements YbiConsentListener {
+public class ConsentManagerActivity extends EventsActivity implements ConsentListener {
 
-    YbiConsentManager manager;
+    ConsentManager manager;
     SharedPreferences storage;
 
     @Override
@@ -24,9 +23,9 @@ public class ConsentManagerActivity extends EventsActivity implements YbiConsent
 
         storage = getSharedPreferences("Demo App", Context.MODE_PRIVATE);
 
-        final YbiConsentBuilder builder = new YbiConsentBuilder().appendPolicyURL("https://yabbi.me/privacy-policies");
+        final ConsentBuilder builder = new ConsentBuilder().appendPolicyURL("https://yabbi.me/privacy-policies");
 
-        manager = YbiConsentManager.getInstance(this);
+        manager = new ConsentManager();
         manager.registerCustomVendor(builder);
         manager.setCustomStorage(storage);
         manager.setListener(this);
@@ -43,7 +42,7 @@ public class ConsentManagerActivity extends EventsActivity implements YbiConsent
     void showWindow(boolean gdpr) {
         clearStorage();
 
-        final YbiConsentBuilder builder = new YbiConsentBuilder().appendGDPR(gdpr);
+        final ConsentBuilder builder = new ConsentBuilder().appendGDPR(gdpr);
         manager.registerCustomVendor(builder);
         manager.loadManager();
     }
@@ -60,7 +59,7 @@ public class ConsentManagerActivity extends EventsActivity implements YbiConsent
     @Override
     public void onConsentManagerLoaded() {
         addLog("onConsentManagerLoaded: Consent window ready to show.");
-        manager.showConsentWindow();
+        manager.showConsentWindow(this);
     }
 
     @Override
@@ -87,6 +86,6 @@ public class ConsentManagerActivity extends EventsActivity implements YbiConsent
         }
 
         addLog("onConsentWindowClosed: User consent" + prefix + " received.");
-        YabbiAds.setUserConsent(hasConsent);
+        Yabbi.setUserConsent(hasConsent);
     }
 }
