@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">YabbiAds Demo App</string>
+    <string name="app_name">Yabbi Demo App</string>
     <string name="advert_integration">ADVERT INTEGRATION</string>
     <string name="consent_manager_integration">CONSENT MANAGER INTEGRATION</string>
     <string name="device_info">DEVICE INFO</string>
