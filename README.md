@@ -4,4 +4,4 @@
 
 Используйте официальную документацию для интеграции SDK
 
-[Официальная документация](https://mobileadx.gitbook.io/mobileadx/mobileadx/dokumentaciya-na-russkom/android-sdk/ustanovka-i-nastroika)
+[Официальная документация](https://yabbi.gitbook.io/yabbi-documentation/android-sdk)
