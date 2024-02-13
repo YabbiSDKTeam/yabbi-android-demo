@@ -66,7 +66,7 @@ public class RewardedActivity extends AdvertActivity implements RewardedListener
         }else if(Objects.equals(network, ironsource)) {
             setPlacementName(EnvironmentVariables.ironsourceRewardedlUnitID);
         }else if(Objects.equals(network, mintegral)) {
-            setPlacementName(EnvironmentVariables.mintegraleRewardedlUnitID);
+            setPlacementName(EnvironmentVariables.mintegralRewardedlUnitID);
         }else if(Objects.equals(network, applovin)) {
             setPlacementName(EnvironmentVariables.applovinRewardedlUnitID);
         }
