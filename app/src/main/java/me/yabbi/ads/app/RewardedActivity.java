@@ -61,19 +61,14 @@ public class RewardedActivity extends AdvertActivity implements RewardedListener
 
         if(Objects.equals(network, yabbi)) {
             setPlacementName(EnvironmentVariables.yabbiRewardedUnitID);
-            Yabbi.setCustomParams(ExternalInfoStrings.applovinRewardedUnitID, null);
         }else if(Objects.equals(network, yandex)) {
             setPlacementName(EnvironmentVariables.yandexRewardedlUnitID);
-            Yabbi.setCustomParams(ExternalInfoStrings.applovinRewardedUnitID, null);
         }else if(Objects.equals(network, ironsource)) {
             setPlacementName(EnvironmentVariables.ironsourceRewardedlUnitID);
-            Yabbi.setCustomParams(ExternalInfoStrings.applovinRewardedUnitID, null);
         }else if(Objects.equals(network, mintegral)) {
             setPlacementName(EnvironmentVariables.mintegraleRewardedlUnitID);
-            Yabbi.setCustomParams(ExternalInfoStrings.applovinRewardedUnitID, null);
         }else if(Objects.equals(network, applovin)) {
-            setPlacementName(EnvironmentVariables.ironsourceRewardedlUnitID);
-            Yabbi.setCustomParams(ExternalInfoStrings.applovinRewardedUnitID, "123");
+            setPlacementName(EnvironmentVariables.applovinRewardedlUnitID);
         }
     }
 
