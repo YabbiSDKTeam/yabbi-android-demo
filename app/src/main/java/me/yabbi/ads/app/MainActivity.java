@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
+
+import sspnet.tech.core.InitializationListener;
+import sspnet.tech.unfiled.AdException;
 import sspnet.tech.yabbi.Yabbi;
 
 public class MainActivity extends AppCompatActivity {
@@ -84,6 +87,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Yabbi.enableDebug(true);
-        Yabbi.initialize(EnvironmentVariables.publisherID);
+        Yabbi.initialize(EnvironmentVariables.publisherID, new InitializationListener() {
+            @Override
+            public void onInitializeSuccess() {
+
+            }
+
+            @Override
+            public void onInitializeFailed(AdException e) {
+
+            }
+        });
     }
 }

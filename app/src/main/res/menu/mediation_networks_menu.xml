@@ -5,10 +5,14 @@
         android:title="@string/yabbi" />
 
     <item
-        android:id="@+id/yandex"
-        android:title="@string/yandex" />
+        android:id="@+id/applovin"
+        android:title="@string/applovin" />
 
     <item
         android:id="@+id/ironsource"
         android:title="@string/ironsource" />
+
+    <item
+        android:id="@+id/yandex"
+        android:title="@string/yandex" />
 </menu>
