@@ -39,10 +39,26 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation 'sspnet.tech:yabbi:1.4.0'
+    // подключение зависимости Yabbi SDK
+    implementation 'sspnet.tech:yabbi:1.4.3'
+
+    // пподключение зависимости рекламной сети Applovin SDK
+    implementation 'sspnet.tech.adapters:applovin:1.1.4'
+    implementation 'com.applovin:applovin-sdk:12.1.0'
+
+    // подключение зависимости рекламной сети IronSource SDK
+    implementation 'sspnet.tech.adapters:ironsource:1.2.3'
+    implementation 'com.ironsource.sdk:mediationsdk:7.8.1'
+
+    // подключение зависимости рекламной сети Yandex SDK
+    implementation 'sspnet.tech.adapters:yandex:1.2.3'
+    implementation 'com.yandex.android:mobileads:7.1.0'
+
+    // подключение зависимости рекламной сети Mintegral SDK
+    implementation 'sspnet.tech.adapters:mintegral:1.2.4'
+    implementation 'com.mbridge.msdk.oversea:reward:16.6.31'
+    implementation 'com.mbridge.msdk.oversea:newinterstitial:16.6.31'
+
+    // подключение зависимости Consent Manager SDK
     implementation 'sspnet.tech.consent:yabbi:1.1.2'
-    implementation 'sspnet.tech.adapters:yandex:1.2.2'
-    implementation 'sspnet.tech.adapters:ironsource:1.2.2'
-    implementation 'sspnet.tech.adapters:mintegral:1.2.3'
-    implementation 'sspnet.tech.adapters:applovin:1.1.3'
 }
