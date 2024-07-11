@@ -46,8 +46,18 @@ public class RewardedActivity extends AdvertActivity implements RewardedListener
     }
 
     @Override
-    public void onRewardedFinished(AdPayload adPayload) {
-        addLog("onRewardedFinished: Ad was finished.");
+    public void onRewardedVideoStarted(AdPayload adPayload) {
+        addLog("onRewardedVideoStarted");
+    }
+
+    @Override
+    public void onRewardedVideoCompleted(AdPayload adPayload) {
+        addLog("onRewardedVideoCompleted");
+    }
+
+    @Override
+    public void onUserRewarded(AdPayload adPayload) {
+        addLog("onUserRewarded");
     }
 
     @Override
