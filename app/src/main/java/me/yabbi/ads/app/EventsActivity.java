@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class EventsActivity extends AppCompatActivity {
+public class EventsActivity extends BaseActivity {
     private TextView events;
 
     void setEvents() {

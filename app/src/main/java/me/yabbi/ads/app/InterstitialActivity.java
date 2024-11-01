@@ -2,6 +2,9 @@ package me.yabbi.ads.app;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+
+import androidx.core.app.NavUtils;
+
 import java.util.Objects;
 
 import sspnet.tech.core.AdPayload;
@@ -18,6 +21,13 @@ public class InterstitialActivity extends AdvertActivity implements Interstitial
         setPlacementName(EnvironmentVariables.yabbiInterstitialUnitID);
         setMediation();
         Yabbi.setInterstitialListener(this);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        // Возвращаемся к родительской Activity
+        NavUtils.navigateUpFromSameTask(this);
+        return true;
     }
 
     @Override

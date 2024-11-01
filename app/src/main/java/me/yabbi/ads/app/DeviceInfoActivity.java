@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import sspnet.tech.yabbi.Yabbi;
 
-public class DeviceInfoActivity extends AppCompatActivity {
+public class DeviceInfoActivity extends BaseActivity {
 
     public static final String DEFAULT_IFA = "00000000-0000-0000-0000-000000000000";
     private static final String DEFAULT_ADDRESS = "02:00:00:00:00:00";
