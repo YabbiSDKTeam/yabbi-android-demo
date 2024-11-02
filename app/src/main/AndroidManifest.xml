@@ -16,14 +16,14 @@
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".InterstitialActivity"
             android:exported="false"
-            android:label="@string/interstitial">
+            android:label="@string/interstitial"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
@@ -31,23 +31,26 @@
         <activity
             android:name=".RewardedActivity"
             android:exported="false"
-            android:label="@string/rewarded_video">
-            <meta-data
+            android:label="@string/rewarded_video"
+            android:parentActivityName=".MainActivity">
+        <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
             android:name=".ConsentManagerActivity"
             android:exported="false"
-            android:label="@string/consent_manager">
-            <meta-data
+            android:label="@string/consent_manager"
+            android:parentActivityName=".MainActivity">
+        <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
         <activity
             android:name=".DeviceInfoActivity"
             android:exported="false"
-            android:label="@string/device_info_lower">
+            android:label="@string/device_info_lower"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
