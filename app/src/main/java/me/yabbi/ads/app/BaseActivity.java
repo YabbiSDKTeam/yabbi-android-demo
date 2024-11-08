@@ -33,7 +33,7 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavUtils.navigateUpFromSameTask(this);
+        finish();
         return true;
     }
 
