@@ -24,13 +24,6 @@ public class InterstitialActivity extends AdvertActivity implements Interstitial
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        // Возвращаемся к родительской Activity
-        NavUtils.navigateUpFromSameTask(this);
-        return true;
-    }
-
-    @Override
     public void onInterstitialLoaded(AdPayload adPayload) {
         addLog("onInterstitialLoaded: Ad loaded and ready to show.");
     }
