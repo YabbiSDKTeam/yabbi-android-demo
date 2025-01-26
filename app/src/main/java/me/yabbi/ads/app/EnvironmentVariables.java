@@ -1,9 +1,10 @@
 package me.yabbi.ads.app;
 
 public abstract class EnvironmentVariables {
-    static final String publisherID = "65057899-a16a-4877-989b-38c432a7fa15";
-    static final String yabbiInterstitialUnitID = "b8359c60-9bde-47c9-85ff-3c7afd2bd982";
-    static final String yabbiRewardedUnitID = "eaac7a7f-b0b0-46d2-ac95-bd58578e9e29";
+    static final String publisherID = "2b086374-e2cc-11ee-90d4-f184dbf25bc2";
+    static final String yabbiInterstitialUnitID = "7838cd57-ef37-4a39-8aa4-6989138936e1";
+    static final String yabbiRewardedUnitID = "c23d23c9-af7f-47e2-aee6-6aea6c45e315";
+    static final String yabbiBannerUnitID = "";
     static final String yandexInterstitialUnitID = "cd1dff91-76d0-44c2-a6ca-fd3f446ef9b5";
     static final String yandexRewardedlUnitID = "7e6334fc-ef08-45e9-9581-d18026a2fadb";
     static final String ironsourceInterstitialUnitID = "ec9decde-58c8-4d1b-885f-479b05f39dcb";

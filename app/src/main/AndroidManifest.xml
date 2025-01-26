@@ -38,6 +38,16 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
+            android:name=".BannerActivity"
+            android:configChanges="orientation"
+            android:exported="false"
+            android:label="@string/banner"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name=".ConsentManagerActivity"
             android:exported="false"
             android:label="@string/consent_manager"

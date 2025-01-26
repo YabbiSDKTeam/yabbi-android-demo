@@ -5,6 +5,7 @@
     <string name="device_info">DEVICE INFO</string>
     <string name="interstitial">Interstitial</string>
     <string name="rewarded_video">Rewarded Video</string>
+    <string name="banner">Banner</string>
     <string name="consent_manager">Consent Manager</string>
     <string name="device_info_lower">Device Info</string>
     <string name="copy">Copy</string>

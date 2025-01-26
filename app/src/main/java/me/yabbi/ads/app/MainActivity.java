@@ -41,11 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
         final String interstitialTitle = getResources().getString(R.string.interstitial);
         final String rewardedVideoTitle = getResources().getString(R.string.rewarded_video);
+        final String bannerTitle = getResources().getString(R.string.banner);
         final String consentManagerTitle = getResources().getString(R.string.consent_manager);
         final String deviceInfoTitle = getResources().getString(R.string.device_info_lower);
 
         advertNavItems.add(new NavItem(interstitialTitle, "Full screen ads. Graphic or video"));
         advertNavItems.add(new NavItem(rewardedVideoTitle, "Full screen rewarded ads"));
+        advertNavItems.add(new NavItem(bannerTitle, "Banner ads"));
+
         consentNavItems.add(new NavItem(consentManagerTitle, "Ask user permissions"));
         infoNavItems.add(new NavItem(deviceInfoTitle, "GAID, UserAgent, etc."));
 
@@ -66,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     final Intent rewarded = new Intent(MainActivity.this, RewardedActivity.class);
                     startActivity(rewarded);
+                    break;
+                case 2:
+                    final Intent banner = new Intent(MainActivity.this, BannerActivity.class);
+                    startActivity(banner);
                     break;
                 default:
                     break;
