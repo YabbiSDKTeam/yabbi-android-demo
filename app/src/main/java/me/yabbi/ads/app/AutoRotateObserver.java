@@ -6,10 +6,6 @@ import android.os.Handler;
 public class AutoRotateObserver extends ContentObserver {
     private final OnAutoRotateChangeListener listener;
 
-    public interface OnAutoRotateChangeListener {
-        void onAutoRotateChanged();
-    }
-
     public AutoRotateObserver(Handler handler, OnAutoRotateChangeListener listener) {
         super(handler);
         this.listener = listener;
@@ -19,5 +15,9 @@ public class AutoRotateObserver extends ContentObserver {
     public void onChange(boolean selfChange) {
         // Уведомляем слушателя об изменении автоповорота
         listener.onAutoRotateChanged();
+    }
+
+    public interface OnAutoRotateChangeListener {
+        void onAutoRotateChanged();
     }
 }

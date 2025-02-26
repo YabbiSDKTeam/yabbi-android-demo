@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class NavItemArrayAdapter extends ArrayAdapter<NavItem> {
@@ -21,13 +23,14 @@ public class NavItemArrayAdapter extends ArrayAdapter<NavItem> {
         layoutResId = listItemLayoutResourceId;
     }
 
+    @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View listItemView = convertView;
         if (null == convertView) {
-            listItemView = inflater.inflate(layoutResId, parent,false);
+            listItemView = inflater.inflate(layoutResId, parent, false);
         }
 
         TextView lineOneView = listItemView.findViewById(android.R.id.text1);

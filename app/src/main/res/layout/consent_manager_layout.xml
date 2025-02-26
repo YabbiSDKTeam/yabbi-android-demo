@@ -10,48 +10,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/actions"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/show_gdpr"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_button"
         android:text="@string/show_gdpr_window"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:background="@drawable/round_button"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:textAllCaps="false"
-        android:textSize="18sp"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/show_no_gdpr"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="@string/show_no_gdpr_window"
         android:layout_marginTop="16dp"
+        android:background="@drawable/round_button"
+        android:text="@string/show_no_gdpr_window"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/show_gdpr"
-        android:background="@drawable/round_button"
-        android:textColor="@android:color/white"
-        android:textAllCaps="false"
-        android:textSize="18sp" />
+        app:layout_constraintTop_toBottomOf="@+id/show_gdpr" />
 
     <include
         android:id="@+id/include"
         layout="@layout/events_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/show_no_gdpr"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/show_no_gdpr" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,20 @@
 package me.yabbi.ads.app;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.widget.ListView;
-import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+
 import java.io.IOException;
 import java.net.NetworkInterface;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import sspnet.tech.yabbi.Yabbi;
 
 public class DeviceInfoActivity extends BaseActivity {
@@ -19,9 +22,11 @@ public class DeviceInfoActivity extends BaseActivity {
     public static final String DEFAULT_IFA = "00000000-0000-0000-0000-000000000000";
     private static final String DEFAULT_ADDRESS = "02:00:00:00:00:00";
 
-    final ArrayList<DeviceInfoItem> items = new ArrayList<>();;
+    final ArrayList<DeviceInfoItem> items = new ArrayList<>();
+    ;
 
     DeviceInfoArrayAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +61,9 @@ public class DeviceInfoActivity extends BaseActivity {
                 this.runOnUiThread(() -> {
                     adapter.notifyDataSetChanged();
                 });
-            } catch (IOException | GooglePlayServicesNotAvailableException | GooglePlayServicesRepairableException e) {
-                items.add(new DeviceInfoItem("GAID",DEFAULT_IFA));
+            } catch (IOException | GooglePlayServicesNotAvailableException |
+                     GooglePlayServicesRepairableException e) {
+                items.add(new DeviceInfoItem("GAID", DEFAULT_IFA));
                 this.runOnUiThread(() -> {
                     adapter.notifyDataSetChanged();
                 });

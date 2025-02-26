@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+
 import sspnet.tech.consent.core.ConsentBuilder;
 import sspnet.tech.consent.core.ConsentListener;
 import sspnet.tech.consent.yabbi.ConsentManager;

@@ -2,12 +2,12 @@ package me.yabbi.ads.app;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+
 import java.util.Objects;
 
 import sspnet.tech.core.AdPayload;
 import sspnet.tech.core.RewardedListener;
 import sspnet.tech.unfiled.AdException;
-import sspnet.tech.unfiled.ExternalInfoStrings;
 import sspnet.tech.yabbi.Yabbi;
 
 public class RewardedActivity extends AdvertActivity implements RewardedListener {
@@ -69,15 +69,15 @@ public class RewardedActivity extends AdvertActivity implements RewardedListener
         final String mintegral = resources.getString(R.string.mintegral);
         final String applovin = resources.getString(R.string.applovin);
 
-        if(Objects.equals(network, yabbi)) {
+        if (Objects.equals(network, yabbi)) {
             setPlacementName(EnvironmentVariables.yabbiRewardedUnitID);
-        }else if(Objects.equals(network, yandex)) {
+        } else if (Objects.equals(network, yandex)) {
             setPlacementName(EnvironmentVariables.yandexRewardedlUnitID);
-        }else if(Objects.equals(network, ironsource)) {
+        } else if (Objects.equals(network, ironsource)) {
             setPlacementName(EnvironmentVariables.ironsourceRewardedlUnitID);
-        }else if(Objects.equals(network, mintegral)) {
+        } else if (Objects.equals(network, mintegral)) {
             setPlacementName(EnvironmentVariables.mintegralRewardedlUnitID);
-        }else if(Objects.equals(network, applovin)) {
+        } else if (Objects.equals(network, applovin)) {
             setPlacementName(EnvironmentVariables.applovinRewardedlUnitID);
         }
     }

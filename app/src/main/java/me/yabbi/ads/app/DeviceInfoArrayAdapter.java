@@ -1,16 +1,14 @@
 package me.yabbi.ads.app;
 
 import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
-import android.content.ClipboardManager;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,12 +29,12 @@ public class DeviceInfoArrayAdapter extends ArrayAdapter<DeviceInfoItem> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
 
         View listItemView = convertView;
         if (null == convertView) {
-            listItemView = inflater.inflate(layoutResId, parent,false);
+            listItemView = inflater.inflate(layoutResId, parent, false);
         }
 
         final TextView lineOneView = listItemView.findViewById(android.R.id.text1);

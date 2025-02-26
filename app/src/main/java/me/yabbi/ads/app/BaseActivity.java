@@ -9,7 +9,6 @@ import android.provider.Settings;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 
 public class BaseActivity extends AppCompatActivity {
     private AutoRotateObserver autoRotateObserver;
@@ -39,7 +38,7 @@ public class BaseActivity extends AppCompatActivity {
 
     private void enableBackButton() {
         final ActionBar actionBar = getSupportActionBar();
-        if(actionBar == null) return;
+        if (actionBar == null) return;
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 

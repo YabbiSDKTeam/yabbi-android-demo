@@ -3,15 +3,13 @@ package me.yabbi.ads.app;
 import android.content.res.Resources;
 import android.os.Bundle;
 
-import androidx.core.app.NavUtils;
-
 import java.util.Objects;
 
 import sspnet.tech.core.AdPayload;
 import sspnet.tech.core.InterstitialListener;
 import sspnet.tech.unfiled.AdException;
-import sspnet.tech.unfiled.ExternalInfoStrings;
 import sspnet.tech.yabbi.Yabbi;
+
 public class InterstitialActivity extends AdvertActivity implements InterstitialListener {
 
     @Override
@@ -58,15 +56,15 @@ public class InterstitialActivity extends AdvertActivity implements Interstitial
         final String applovin = resources.getString(R.string.applovin);
 
 
-        if(Objects.equals(network, yabbi)) {
+        if (Objects.equals(network, yabbi)) {
             setPlacementName(EnvironmentVariables.yabbiInterstitialUnitID);
-        }else if(Objects.equals(network, yandex)) {
+        } else if (Objects.equals(network, yandex)) {
             setPlacementName(EnvironmentVariables.yandexInterstitialUnitID);
-        }else if(Objects.equals(network, ironsource)) {
+        } else if (Objects.equals(network, ironsource)) {
             setPlacementName(EnvironmentVariables.ironsourceInterstitialUnitID);
-        }else if(Objects.equals(network, mintegral)) {
+        } else if (Objects.equals(network, mintegral)) {
             setPlacementName(EnvironmentVariables.mintegralInterstitialUnitID);
-        }else if(Objects.equals(network, applovin)) {
+        } else if (Objects.equals(network, applovin)) {
             setPlacementName(EnvironmentVariables.applovinInterstitialUnitID);
         }
     }

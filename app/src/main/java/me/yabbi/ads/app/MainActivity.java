@@ -1,13 +1,14 @@
 package me.yabbi.ads.app;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
 import sspnet.tech.core.InitializationListener;
@@ -21,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ActionBar actionBar =  getSupportActionBar();
-        if(actionBar != null) {
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             final int color = getResources().getColor(R.color.background);
             actionBar.setBackgroundDrawable(new ColorDrawable(color));
             actionBar.setElevation(0);
