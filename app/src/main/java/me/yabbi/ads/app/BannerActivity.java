@@ -8,6 +8,7 @@ import java.util.Objects;
 import sspnet.tech.core.AdPayload;
 import sspnet.tech.core.BannerListener;
 import sspnet.tech.unfiled.AdException;
+import sspnet.tech.unfiled.BannerSettings;
 import sspnet.tech.unfiled.ExternalInfoStrings;
 import sspnet.tech.yabbi.Yabbi;
 
@@ -71,8 +72,12 @@ public class BannerActivity extends AdvertActivity implements BannerListener {
     public void loadAd() {
         if (Yabbi.canLoadAd(Yabbi.BANNER, getPlacementName())) {
             addLog("Ad start to load.");
+            final BannerSettings settings =  new BannerSettings.Builder()
+                    .setShowCloseButton(true)
+                    .setBannerLayoutID(R.id.banner_view)
+                    .build();
             Yabbi.setCustomParams(ExternalInfoStrings.yandexBannerWidth, findViewById(R.id.banner_view).getWidth());
-            Yabbi.setBannerLayoutID(R.id.banner_view);
+            Yabbi.setBannerCustomSettings(settings);
             Yabbi.loadAd(this, Yabbi.BANNER, getPlacementName());
         } else {
             addLog("SDK can't start load ad.");
