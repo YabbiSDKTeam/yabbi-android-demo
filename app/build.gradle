@@ -40,7 +40,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // подключение зависимости Yabbi SDK
-    implementation 'sspnet.tech:yabbi:1.7.0'
+    implementation 'sspnet.tech:yabbi:1.7.2'
 
     // пподключение зависимости рекламной сети Applovin SDK
     implementation 'sspnet.tech.adapters:applovin:1.4.0'

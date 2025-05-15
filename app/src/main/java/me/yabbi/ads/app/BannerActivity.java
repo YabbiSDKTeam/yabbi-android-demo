@@ -8,7 +8,7 @@ import java.util.Objects;
 import sspnet.tech.core.AdPayload;
 import sspnet.tech.core.BannerListener;
 import sspnet.tech.unfiled.AdException;
-import sspnet.tech.unfiled.BannerSettings;
+import sspnet.tech.core.BannerSettings;
 import sspnet.tech.unfiled.ExternalInfoStrings;
 import sspnet.tech.yabbi.Yabbi;
 

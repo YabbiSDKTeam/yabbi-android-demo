@@ -6,7 +6,7 @@
 
     <include layout="@layout/activity_advert" />
 
-    <sspnet.tech.unfiled.BannerView
+    <sspnet.tech.core.BannerView
         android:id="@+id/banner_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
