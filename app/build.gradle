@@ -60,5 +60,5 @@ dependencies {
     implementation 'com.mbridge.msdk.oversea:newinterstitial:16.6.31'
 
     // подключение зависимости Consent Manager SDK
-    implementation 'sspnet.tech.consent:yabbi:1.2.1'
+    implementation 'sspnet.tech.consent:yabbi:1.2.2'
 }
