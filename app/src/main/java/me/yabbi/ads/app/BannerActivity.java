@@ -74,7 +74,6 @@ public class BannerActivity extends AdvertActivity implements BannerListener {
             addLog("Ad start to load.");
             final BannerSettings settings =  new BannerSettings.Builder()
                     .setShowCloseButton(true)
-                    .setBannerLayoutID(R.id.banner_view)
                     .build();
             Yabbi.setCustomParams(ExternalInfoStrings.yandexBannerWidth, findViewById(R.id.banner_view).getWidth());
             Yabbi.setBannerCustomSettings(settings);
