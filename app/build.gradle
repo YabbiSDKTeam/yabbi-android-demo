@@ -40,7 +40,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // подключение зависимости Yabbi SDK
-    implementation 'sspnet.tech:yabbi:1.7.5'
+    implementation 'sspnet.tech:yabbi:1.7.6'
 
     // пподключение зависимости рекламной сети Applovin SDK
     implementation 'sspnet.tech.adapters:applovin:1.4.0'
@@ -60,5 +60,5 @@ dependencies {
     implementation 'com.mbridge.msdk.oversea:newinterstitial:16.6.31'
 
     // подключение зависимости Consent Manager SDK
-    implementation 'sspnet.tech.consent:yabbi:1.2.2'
+    implementation 'sspnet.tech.consent:yabbi:1.2.3'
 }
